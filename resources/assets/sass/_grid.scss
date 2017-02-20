@@ -1,0 +1,138 @@
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+/*-- our cleafix hack -- */
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*-- mobile first --*/
+[class*='col-'] {
+  float: left;
+  min-height: 1px;
+  width: 100%;
+  /*-- our gutter --*/
+  padding: 7.5px;
+}
+
+[class*='col-static-'] {
+  /*-- no gutter --*/
+  padding: 0;
+}
+
+.col-2 {
+  h2, .regular{
+    text-align: center;
+  }
+  p {
+    text-align: left !important;
+  }
+}
+
+.col-static-1 {
+  width: 16.66%;
+}
+
+.col-static-2 {
+  width: 33.33%;
+}
+
+.col-static-3 {
+  width: 50%;
+}
+
+.col-static-4 {
+  width: 66.664%;
+}
+
+.col-static-5 {
+  width: 83.33%;
+}
+
+.col-static-6 {
+  width: 100%;
+}
+
+/*-- Desktop --*/
+@media all and (min-width: 768px) {
+  .col-1 {
+    width: 16.66%;
+  }
+
+  .col-2 {
+    width: 33.33%;
+  }
+
+  .col-3 {
+    width: 50%;
+  }
+
+  .col-4 {
+    width: 66.664%;
+  }
+
+  .col-5 {
+    width: 83.33%;
+  }
+
+  .col-6 {
+    width: 100%;
+  }
+
+  .main_nav {
+    margin-top: 41px !important;
+  }
+
+  .col-3, .col-4, .col-5, .col-6 {
+    h2 {
+      padding-left: 45px;
+      text-align: left;
+    }
+  }
+
+}
+
+/*-- small --*/
+@media all and (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+  .main_nav {
+    font-size: 0.6em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+}
+
+/*-- medium --*/
+@media all and (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+  .main_nav {
+    font-size: 0.8em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+}
+
+/*-- big --*/
+@media all and (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+
+  .main_nav {
+    font-size: 1em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+}

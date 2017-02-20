@@ -1,0 +1,426 @@
+/*
+ * Fonts
+ */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+@import url(http://fonts.googleapis.com/css?family=Medula+One);
+
+/*
+* Normalize
+*/
+@import "../../../node_modules/normalize-scss/sass/normalize/import-now";
+
+/*
+* Libraries
+*/
+@import "font-awesome/font-awesome";
+
+/*
+ * Variables
+ */
+@import "variables";
+
+/*
+ * Grid
+ */
+@import "grid";
+
+* {
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+
+html {
+  color: $primary_color;
+  min-height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: auto;
+  font-family: $font_stack;
+  line-height: 1.3em;
+}
+
+body {
+  background-color: $primary_bg_color;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: -moz-linear-gradient(left, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 1) 15%, rgba(51, 51, 51, 1) 85%, rgba(51, 51, 51, 0) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(51, 51, 51, 0)), color-stop(15%, rgba(51, 51, 51, 1)), color-stop(85%, rgba(51, 51, 51, 1)), color-stop(100%, rgba(51, 51, 51, 0)));
+  background: -webkit-linear-gradient(left, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 1) 15%, rgba(51, 51, 51, 1) 85%, rgba(51, 51, 51, 0) 100%);
+  background: -o-linear-gradient(left, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 1) 15%, rgba(51, 51, 51, 1) 85%, rgba(51, 51, 51, 0) 100%);
+  background: -ms-linear-gradient(left, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 1) 15%, rgba(51, 51, 51, 1) 85%, rgba(51, 51, 51, 0) 100%);
+  background: linear-gradient(to right, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 1) 15%, rgba(51, 51, 51, 1) 85%, rgba(51, 51, 51, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00333333', endColorstr='#00333333', GradientType=1);
+}
+
+.vr {
+  width: 1px;
+  height: 250px;
+  float: left;
+  margin: 0 10px;
+  background: -moz-linear-gradient(top, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 0.6) 35%, rgba(51, 51, 51, 0.6) 65%, rgba(51, 51, 51, 0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(51, 51, 51, 0)), color-stop(35%, rgba(51, 51, 51, 0.6)), color-stop(65%, rgba(51, 51, 51, 0.6)), color-stop(100%, rgba(51, 51, 51, 0)));
+  background: -webkit-linear-gradient(top, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 0.6) 35%, rgba(51, 51, 51, 0.6) 65%, rgba(51, 51, 51, 0) 100%);
+  background: -o-linear-gradient(top, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 0.6) 35%, rgba(51, 51, 51, 0.6) 65%, rgba(51, 51, 51, 0) 100%);
+  background: -ms-linear-gradient(top, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 0.6) 35%, rgba(51, 51, 51, 0.6) 65%, rgba(51, 51, 51, 0) 100%);
+  background: linear-gradient(to bottom, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 0.6) 35%, rgba(51, 51, 51, 0.6) 65%, rgba(51, 51, 51, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00333333', endColorstr='#00333333', GradientType=0);
+}
+
+a {
+  text-decoration: none;
+  color: $primary_color;
+  display: block;
+}
+
+a:hover, .active, button:hover, .button:hover {
+  color: $link_hover-color;
+}
+
+button, .button {
+  color: #C0C0C0;
+  background: black;
+  border: 1px solid #333333;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 10px;
+}
+
+button.big {
+  width: 100%;
+}
+
+p {
+  text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+}
+
+.dull {
+  color: $dull_color;
+  font-weight: bold;
+  font-size: 0.9em;
+  a {
+    color: $dull_color;
+    :hover {
+      color: $link_hover-color;
+    }
+  }
+}
+
+.glow {
+  text-shadow: 0 0 0.3em $dull_color, 0 0 0.3em $dull_color;
+}
+
+ul li {
+  padding: 10px 0;
+}
+
+ul.layout {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.box {
+  padding: 15px;
+  border: $border;
+  background: $background;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.logo {
+  height: 178px;
+  width: auto;
+
+  img {
+    max-width: 100%;
+    max-height: 148px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.news {
+  padding: 0;
+
+  .newswrapper {
+    width: 90%;
+    margin: auto;
+    height: 73px;
+
+    ul {
+
+      width: 100%;
+
+      li {
+        display: table;
+        width: 100%;
+        padding: 5px;;
+
+        div {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          line-height: 20px;
+          height: 65px;
+        }
+      }
+    }
+  }
+
+  position: relative;
+
+  .admin {
+    position: absolute;
+    right: 5px;
+    top: 5px
+  }
+}
+
+.main_nav, .member_nav {
+  li {
+    padding: 0 10px;
+    float: left;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-family: 'Roboto Slab', "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  }
+}
+
+.main_nav {
+  min-height: 60px;
+  line-height: 60px;
+}
+
+.member_nav {
+  min-height: 45px;
+  line-height: 45px;
+
+}
+
+.get_there {
+  width: 100%;
+  border: $border;
+}
+
+.infobox {
+  font-weight: bold;
+  color: $link_hover-color;
+}
+
+/*SIDEBARS STARt*/
+ul.regular {
+  padding: 15px;
+}
+
+.regular {
+  position: relative;
+
+  .summerbreak {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+  }
+
+  li img {
+    margin-top: 7px;
+    border: 1px solid #333333;
+    width: 100%;
+  }
+}
+
+form, .form {
+  .form-group {
+    margin-top: 15px;
+    width: 100%;
+
+    input:not([type=checkbox]), textarea {
+      width: 100%;
+    }
+
+    img {
+      width: 250px;
+    }
+  }
+  .error {
+    span {
+      font-size: 0.9em;
+      color: $error-color;
+    }
+
+    input, textarea {
+      border: 2px solid $error-color;
+      border-radius: 5px;
+    }
+  }
+
+  .stretch50 {
+    width: calc(50% - 3px);
+  }
+
+}
+
+.pagination {
+
+  .disabled {
+    color: $dull_color;
+  }
+
+  li {
+
+    margin-left: 10px;
+    float: left;
+    padding: 0;
+  }
+}
+
+footer {
+  .box {
+    min-height: 290px;
+  }
+
+  .ads img {
+    margin: 10px;
+    float: left;
+  }
+
+  .social {
+    line-height: 1.3em;
+    font-size: 1.3em;
+  }
+
+  a.facebook:hover {
+    color: #3b5998;
+  }
+
+  a.freefm:hover {
+    color: #f60;
+  }
+}
+
+.events, .bands {
+
+  a.thumb {
+    width: calc(100% - 21px);
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .button {
+    margin-right: 10px;
+  }
+
+  iframe {
+    margin-top: 10px;
+    height: 100px;
+    overflow: hidden;
+    width: 100%;
+    border: 0;
+  }
+}
+
+.event {
+  img {
+    max-width: 50%;
+    padding-left: 15px;
+  }
+
+  h3, span {
+    line-height: 36px
+  }
+
+  h3 {
+    padding-left: 45px;
+  }
+}
+
+.pics {
+  .table {
+    width: 100%; //move to
+    height: 250px; //move
+
+    border: $border;
+    background: black;
+
+    display: table;
+
+    .cell {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    * {
+      max-height: 248px; //move
+      max-width: 100%;
+    }
+  }
+
+  .admin {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+  }
+
+}
+
+.about {
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    border: $border;
+  }
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*HELPERS START*/
+.left {
+  float: left;
+}
+
+.right {
+  float: right !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+.rel {
+  position: relative;
+}
