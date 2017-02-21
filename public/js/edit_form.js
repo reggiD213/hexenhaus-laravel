@@ -34,4 +34,7 @@ $("#event_thumb,#band_thumb").on('change', function () {
 $("#imgInp").change(function () {
     readURL(this);
 });
+
+CKEDITOR.replace('event_desc_long');
+
 //# sourceMappingURL=edit_form.js.map

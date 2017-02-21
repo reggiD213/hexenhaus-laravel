@@ -18,7 +18,7 @@ class CreateBandsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            $table->string('description');
+            $table->text('description');
             $table->string('homepage');
             $table->string('soundcloud')->nullable();
             $table->timestamps();
