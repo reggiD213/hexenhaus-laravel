@@ -45,7 +45,7 @@ class PicsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -73,57 +73,83 @@ class PicsController extends Controller
         $path = public_path('images/uploads/gallery/' . $filename);
         $thumbpath = public_path('images/uploads/gallery/' . $thumbnail);
 
-        Image::make($image->getRealPath())->widen(800)->save($path);
+        $intervention = Image::make($image->getRealPath())->widen(800)->save($path);
         Image::make($image->getRealPath())->widen(227)->save($thumbpath);
 
+        $pic->height = $intervention->height();
+        $pic->width = $intervention->width();
         $pic->save();
 
         return redirect(route('pics.index'))->withInfo('Bild erfolgreich hochgeladen!');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pic $pic)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Pic $pic
      * @return \Illuminate\Http\Response
      */
     public function edit(Pic $pic)
     {
-        //
+        return view('pics.edit', compact('pic'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  Pic $pic
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pic $pic)
     {
-        //
+        //validation
+        $this->validate($request, [
+            'name' => 'max:30'
+        ]);
+
+        $pic->name = $request->name ? $request->name : null;
+
+        if ($request->hasFile('image')) {
+            //resize and move the image(s)
+            $image = $request->file('image');
+            $time = time();
+
+            $filename = $time . '_' . $image->getClientOriginalName();
+            $thumbnail = $time . '_thumb_' . $image->getClientOriginalName();
+
+            $pic->filename = $filename;
+
+            $path = public_path('images/uploads/gallery/' . $filename);
+            $thumbpath = public_path('images/uploads/gallery/' . $thumbnail);
+
+            $intervention = Image::make($image->getRealPath())->widen(800)->save($path);
+            Image::make($image->getRealPath())->widen(227)->save($thumbpath);
+
+            $pic->height = $intervention->height();
+            $pic->width = $intervention->width();
+        }
+
+        $pic->save();
+
+        return redirect(route('pics.index'))->withInfo('Bild erfolgreich geändert!');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Pic $pic
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pic $pic)
     {
-        //
+        unlink(public_path('images/uploads/gallery/' . $pic->thumbnail()));
+        unlink(public_path('images/uploads/gallery/' . $pic->filename));
+
+        $pic->delete();
+
+        return redirect(route('pics.index'))->withInfo('Bild erfolgreich gelöscht!');
     }
 
 }

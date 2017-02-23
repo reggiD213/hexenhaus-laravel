@@ -29,7 +29,7 @@ Route::get('events_archive', ['uses' => 'EventsController@indexBygone', 'as' => 
 
 Route::resource('bands', 'BandsController', ['except' => ['show']]);
 
-Route::resource('pics', 'PicsController');
+Route::resource('pics', 'PicsController', ['except' => ['show']]);
 
 Route::resource('newsfeeds', 'NewsfeedsController');
 

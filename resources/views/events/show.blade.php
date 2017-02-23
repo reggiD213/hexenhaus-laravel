@@ -14,7 +14,18 @@
         <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Beginn: {{ $event->printTime() }}</span>
         <div class="clear"></div>
         <hr>
-        <img class="right" src="/images/uploads/events/{{ $event->id }}/{{ $event->image }}" alt="{{ $event->title }}">
-        <p>{{ $event->desc_long }}</p>
+        <a href="/images/uploads/events/{{ $event->id }}/{{ $event->image }}" class="swipe" title="{{ $event->title }}" itemprop="contentUrl" data-size="{{ $event->image_width }}x{{ $event->image_height }}" data-index="1">
+            <img class="right" src="/images/uploads/events/{{ $event->id }}/{{ $event->image }}" alt="{{ $event->title }}" itemprop="thumbnail">
+        </a>
+        <p>{!! $event->desc_long !!}</p>
     </div>
+@endsection
+
+@section('js')
+    @include('includes.photoswipe')
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="/libs/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="/libs/photoswipe/default-skin/default-skin.css">
 @endsection

@@ -19,7 +19,7 @@ $(function () {
 });
 
 //image upload preview
-$("#event_thumb,#band_thumb").on('change', function () {
+$("#event_thumb,#band_thumb,#pic_thumb").on('change', function () {
     var reader = new FileReader();
 
     reader.onload = function (e) {

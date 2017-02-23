@@ -36,6 +36,6 @@
     </div>
 </div>
 
-<script src="{{ elixir("js/pswp_settings.js") }}"></script>
+<script src="{{ elixir("js/pswp_settings.js", "") }}"></script>
 <script src="/libs/photoswipe/photoswipe.min.js"></script>
 <script src="/libs/photoswipe/photoswipe-ui-default.min.js"></script>

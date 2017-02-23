@@ -149,6 +149,6 @@ class BandsController extends Controller
 
         $band->delete();
 
-        return redirect(route('bands.index'));
+        return redirect(route('bands.index'))->withInfo('Band erfolgreich gelöscht!');
     }
 }

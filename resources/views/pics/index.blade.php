@@ -20,7 +20,7 @@
             @endif
             @foreach($pics as $pic)
                 <div class="col-2 rel">
-                    <a href="/images/uploads/gallery/{{ $pic->filename }}" class="table swipe" title="{{ $pic->name }}" itemprop="contentUrl" data-size="1000x667" data-index="{{ $loop->index }}">
+                    <a href="/images/uploads/gallery/{{ $pic->filename }}" class="table swipe" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}">
                         <div class="cell">
                             <img src="/images/uploads/gallery/{{ $pic->thumbnail() }}" alt="{{ $pic->name }}" itemprop="thumbnail">
                         </div>
@@ -41,13 +41,9 @@
 
 @section('js')
     @include('includes.photoswipe')
-
-    {{-- <script src="/libs/lightbox2-master/dist/js/lightbox.min.js"></script>--}}
 @endsection
 
 @section('css')
     <link rel="stylesheet" href="/libs/photoswipe/photoswipe.css">
     <link rel="stylesheet" href="/libs/photoswipe/default-skin/default-skin.css">
-    {{-- <link rel="stylesheet" href="/libs/lightbox2-master/dist/css/lightbox.min.css">--}}
-
 @endsection

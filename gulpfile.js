@@ -15,8 +15,10 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
     mix.sass('app.scss')
-        .version('css/app.css', 'public')
+
         .copy('resources/assets/fonts/', 'public/fonts')
         .scripts('edit_form.js')
-        .scripts('pswp_settings.js');
+        .scripts('pswp_settings.js')
+        .version(['css/app.css', 'js/edit_form.js', 'js/pswp_settings.js'], 'public');
 });
+

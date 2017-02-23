@@ -90,7 +90,7 @@ class EventsController extends Controller
 
         $event->name = $request->name;
         $event->desc_short = $request->desc_short;
-        $event->desc_long = $request->desc_long;
+        $event->desc_long = clean($request->desc_long);
         $event->price = $request->price;
         $event->datetime = $request->date . ' ' . $request->time . ':00';
 
@@ -112,9 +112,11 @@ class EventsController extends Controller
             $path = public_path('images/uploads/events/' . $event->id . '/' . $filename);
             $thumbpath = public_path('images/uploads/events/' . $event->id . '/' . $thumbnail);
 
-            Image::make($image->getRealPath())->widen(800)->save($path);
+            $intervention = Image::make($image->getRealPath())->widen(800)->save($path);
             Image::make($image->getRealPath())->widen(223)->save($thumbpath);
 
+            $event->image_height = $intervention->height();
+            $event->image_width = $intervention->width();
             $event->save();
         }
 
@@ -149,10 +151,9 @@ class EventsController extends Controller
             'date' => 'date',
             'time' => 'date_format:H:i',
         ]);
-
         $event->name = $request->name;
         $event->desc_short = $request->desc_short;
-        $event->desc_long = $request->desc_long;
+        $event->desc_long = clean($request->desc_long);
         $event->price = $request->price;
         $event->guests = $request->guests;
         $event->datetime = $request->date . ' ' . $request->time . ':00';
@@ -174,9 +175,11 @@ class EventsController extends Controller
             $path = public_path('images/uploads/events/' . $event->id . '/' . $filename);
             $thumbpath = public_path('images/uploads/events/' . $event->id . '/' . $thumbnail);
 
-            Image::make($image->getRealPath())->widen(800)->save($path);
+            $intervention = Image::make($image->getRealPath())->widen(800)->save($path);
             Image::make($image->getRealPath())->widen(223)->save($thumbpath);
 
+            $event->image_height = $intervention->height();
+            $event->image_width = $intervention->width();
             $event->save();
         }
 
@@ -197,6 +200,6 @@ class EventsController extends Controller
 
         $event->delete();
 
-        return redirect(route('events.index'));
+        return redirect(route('events.index'))->withInfo('Veranstaltung erfolgreich gelöscht!');
     }
 }

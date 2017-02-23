@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->text('desc_long');
             $table->float('price');
             $table->integer('guests')->nullable();
-            $table->timestamp('datetime');
+            $table->timestamp('datetime')->nullable();
             $table->timestamps();
         });
     }
