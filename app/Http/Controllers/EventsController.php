@@ -112,7 +112,10 @@ class EventsController extends Controller
             $path = public_path('images/uploads/events/' . $event->id . '/' . $filename);
             $thumbpath = public_path('images/uploads/events/' . $event->id . '/' . $thumbnail);
 
-            $intervention = Image::make($image->getRealPath())->widen(800)->save($path);
+            $intervention = Image::make(
+                $image->getRealPath())->widen(1920, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
             Image::make($image->getRealPath())->widen(223)->save($thumbpath);
 
             $event->image_height = $intervention->height();
@@ -175,7 +178,10 @@ class EventsController extends Controller
             $path = public_path('images/uploads/events/' . $event->id . '/' . $filename);
             $thumbpath = public_path('images/uploads/events/' . $event->id . '/' . $thumbnail);
 
-            $intervention = Image::make($image->getRealPath())->widen(800)->save($path);
+            $intervention = Image::make(
+                $image->getRealPath())->widen(1920, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
             Image::make($image->getRealPath())->widen(223)->save($thumbpath);
 
             $event->image_height = $intervention->height();

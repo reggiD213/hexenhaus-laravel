@@ -14,7 +14,7 @@
             <div class="box">
                 <h3>Informationen:</h3>
                 <hr>
-                <ul style="margin-bottom: 0;">
+                <ul>
                     <li>Veranstaltungsbeginn, wenn nicht anders angegeben um 20:00</li>
                     <li>Eintritt ab 16 Jahren</li>
                     <li><a style="text-decoration: underline;" href="{{ route('impressum') }}">Impressum</a></li>
