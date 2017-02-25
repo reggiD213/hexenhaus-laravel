@@ -9,7 +9,10 @@
     <h2>{{ $event->name }}</h2>
     <hr>
     <div class="box event">
-        <a class="left button" href="{{ route('events.index') }}"><i class="fa fa-arrow-circle-left"></i> Zurück</a>
+            <a class="left button" href="{{ route('events.index') }}"><i class="fa fa-arrow-circle-left"></i> Zurück</a>
+        @if($event->gallery)
+            <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Gallerie</a>
+        @endif
         <h3 class="glow left">{{ $event->printDate() }}</h3>
         <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Beginn: {{ $event->printTime() }}</span>
         <div class="clear"></div>

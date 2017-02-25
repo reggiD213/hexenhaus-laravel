@@ -19,6 +19,11 @@ class Event extends Model
         return $this->belongsToMany('App\Band');
     }
 
+    public function gallery()
+    {
+        return $this->hasOne('App\Gallery');
+    }
+
     public function printPrice()
     {
         return number_format($this->price, 2, ',', '.');

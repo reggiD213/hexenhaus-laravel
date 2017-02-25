@@ -27,7 +27,7 @@
                     <li><a class="{{ set_active(['events','/','events_archive']) }}" href="{{ route('events.index') }}">EVENTS</a></li>
                     <li><a class="{{ set_active('apply') }}" href="{{ route('apply') }}">BEWERBEN</a></li>
                     <li><a class="{{ set_active('bands') }}" href="{{ route('bands.index') }}">BANDS</a></li>
-                    <li><a class="{{ set_active('pics') }}" href="{{ route('pics.index') }}">PICS</a></li>
+                    <li><a class="{{ set_active('pics') }}" href="{{ route('galleries.index') }}">PICS</a></li>
                     <li><a class="{{ set_active('contact') }}" href="{{ route('contact') }}">KONTAKT</a></li>
                     <li><a class="{{ set_active('about') }}" href="{{ route('about') }}">ÜBER UNS</a></li>
                 </ul>

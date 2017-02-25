@@ -1,4 +1,4 @@
-$('.pics, .event').each(function () {
+$('.gallery, .event').each(function () {
     var $pic = $(this),
         getItems = function () {
             var items = [];

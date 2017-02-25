@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pic extends Model
 {
+    public function gallery()
+    {
+        return $this->belongsTo('App\Gallery');
+    }
+
     public function thumbnail()
     {
         $filename = $this->filename;

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDimensionsToPicsTable extends Migration
+class CreateGalleriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddDimensionsToPicsTable extends Migration
      */
     public function up()
     {
-        Schema::table('pics', function (Blueprint $table) {
-            $table->integer('height')->nullable();
-            $table->integer('width')->nullable();
+        Schema::create('galleries', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('event_id')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -26,9 +27,6 @@ class AddDimensionsToPicsTable extends Migration
      */
     public function down()
     {
-        Schema::table('pics', function (Blueprint $table) {
-            $table->dropColumn('height');
-            $table->dropColumn('width');
-        });
+        Schema::dropIfExists(['galleries']);
     }
 }

@@ -320,7 +320,7 @@ footer {
   }
 }
 
-.events, .bands {
+.events, .bands, .event, .gallery {
 
   a.thumb {
     width: calc(100% - 21px);
@@ -358,7 +358,16 @@ footer {
   }
 }
 
-.pics {
+.gallery {
+
+  h3, span {
+    line-height: 36px
+  }
+
+  h3 {
+    padding-left: 45px;
+  }
+
   .table {
     width: 100%; //move to
     height: 250px; //move

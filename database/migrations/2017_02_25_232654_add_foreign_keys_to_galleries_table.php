@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BandEvent extends Migration
+class AddForeignKeysToGalleriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class BandEvent extends Migration
      */
     public function up()
     {
-        Schema::create('band_event', function (Blueprint $table) {
-            $table->integer('band_id');
-            $table->integer('event_id');
+        Schema::table('galleries', function (Blueprint $table) {
+            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
@@ -26,6 +25,8 @@ class BandEvent extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('band_event');
+        Schema::table('galleries', function (Blueprint $table) {
+            $table->dropForeign('event_id');
+        });
     }
 }

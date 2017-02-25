@@ -18,12 +18,15 @@ class CreateEventsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
+            $table->integer('image_height')->nullable();
+            $table->integer('image_width')->nullable();
             $table->text('desc_short');
             $table->text('desc_long');
             $table->float('price');
             $table->integer('guests')->nullable();
             $table->timestamp('datetime')->nullable();
             $table->timestamps();
+            $table->integer('gallery_id')->unsigned()->nullable();
         });
     }
 

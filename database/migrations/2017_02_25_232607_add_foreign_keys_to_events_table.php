@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDimensionsToEventsTable extends Migration
+class AddForeignKeysToEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddDimensionsToEventsTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->integer('image_height')->nullable();
-            $table->integer('image_width')->nullable();
+            $table->foreign('gallery_id')->references('id')->on('galleries');
         });
     }
 
@@ -27,8 +26,7 @@ class AddDimensionsToEventsTable extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->dropColumn('image_height');
-            $table->dropColumn('image_width');
+            $table->dropForeign('gallery_id');
         });
     }
 }
