@@ -27,9 +27,12 @@ class GalleriesController extends Controller
      */
     public function index()
     {
+        /*
         $galleries = Gallery::with(['event' => function ($query) { //TODO: verify if this works (I doubt it.)
             $query->orderBy('datetime', 'desc');
         }], 'pics')->paginate(config('custom.galleries_per_page'));
+        */
+        $galleries = Gallery::all();
         return view('galleries.index', compact('galleries'));
     }
 
@@ -63,7 +66,9 @@ class GalleriesController extends Controller
 
         $gallery->save();
 
-        return redirect(route('galleries.index'))->withInfo('Gallerie erfolgreich erstellt!');
+        mkdir(public_path('images/uploads/galleries/' . $gallery->id));
+
+        return redirect(route('galleries.index'))->withInfo('Galerie erfolgreich erstellt!');
     }
 
     /**
@@ -113,6 +118,6 @@ class GalleriesController extends Controller
 
         $gallery->delete();
 
-        return redirect(route('bands.index'))->withInfo('Band erfolgreich gelöscht!');
+        return redirect(route('galleries.index'))->withInfo('Galerie erfolgreich gelöscht!');
     }
 }

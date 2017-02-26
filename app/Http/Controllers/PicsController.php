@@ -50,28 +50,21 @@ class PicsController extends Controller
      */
     public function store(Request $request)
     {
-        //validation
-        $this->validate($request, [
-            'name' => 'max:30',
-            'image' => 'required'
-        ]);
-
         //create Model
         $pic = new Pic;
 
-        $pic->name = $request->name ? $request->name : null;
-
         //resize and move the image(s)
-        $image = $request->file('image');
+        $image = $request->file('qqfile');
         $time = time();
 
         $filename = $time . '_' . $image->getClientOriginalName();
         $thumbnail = $time . '_thumb_' . $image->getClientOriginalName();
 
         $pic->filename = $filename;
+        $pic->gallery_id = $request->gallery_id;
 
-        $path = public_path('images/uploads/gallery/' . $filename);
-        $thumbpath = public_path('images/uploads/gallery/' . $thumbnail);
+        $path = public_path('images/uploads/galleries/' . $pic->gallery_id . '/' .  $filename);
+        $thumbpath = public_path('images/uploads/galleries/' . $pic->gallery_id . '/' . $thumbnail);
 
         $intervention = Image::make(
             $image->getRealPath())->widen(1920, function ($constraint) {
@@ -83,7 +76,11 @@ class PicsController extends Controller
         $pic->width = $intervention->width();
         $pic->save();
 
-        return redirect(route('pics.index'))->withInfo('Bild erfolgreich hochgeladen!');
+        return response()->json([
+            'bla' => $request->all(),
+            'success' => true
+        ], 200);
+
     }
 
     /**
@@ -106,12 +103,8 @@ class PicsController extends Controller
      */
     public function update(Request $request, Pic $pic)
     {
-        //validation
-        $this->validate($request, [
-            'name' => 'max:30'
-        ]);
 
-        $pic->name = $request->name ? $request->name : null;
+        $pic->gallery_id = $request->gallery_id ? $request->gallery_id : 1;
 
         if ($request->hasFile('image')) {
             //resize and move the image(s)
@@ -150,10 +143,12 @@ class PicsController extends Controller
      */
     public function destroy(Pic $pic)
     {
-        unlink(public_path('images/uploads/gallery/' . $pic->thumbnail()));
-        unlink(public_path('images/uploads/gallery/' . $pic->filename));
-
+        dd($pic->id);
         $pic->delete();
+        unlink(public_path('images/uploads/galleries/' . $pic->gallery . '/' . $pic->thumbnail()));
+        unlink(public_path('images/uploads/galleries/' . $pic->gallery . '/' . $pic->filename));
+        dd('jup');
+
 
         return redirect(route('pics.index'))->withInfo('Bild erfolgreich gelöscht!');
     }

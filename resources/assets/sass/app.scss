@@ -4,22 +4,18 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
 @import url(http://fonts.googleapis.com/css?family=Medula+One);
-
 /*
 * Normalize
 */
 @import "../../../node_modules/normalize-scss/sass/normalize/import-now";
-
 /*
 * Libraries
 */
 @import "font-awesome/font-awesome";
-
 /*
  * Variables
  */
 @import "variables";
-
 /*
  * Grid
  */
@@ -356,6 +352,10 @@ footer {
   h3 {
     padding-left: 45px;
   }
+
+  .dull {
+    padding-right: 45px;
+  }
 }
 
 .gallery {
@@ -368,33 +368,55 @@ footer {
     padding-left: 45px;
   }
 
-  .table {
-    width: 100%; //move to
-    height: 250px; //move
+  .square-1 {
+    width: 100%;
+    padding-bottom: 99%; /* = width for a square aspect ratio */
+    position: relative;
+    overflow: hidden;
 
-    border: $border;
-    background: black;
-
-    display: table;
-
-    .cell {
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
+    button {
+      position: absolute;
+      border: none;
+      right: 0px;
+      top: 0px;
+      background: none;
     }
 
-    * {
-      max-height: 248px; //move
-      max-width: 100%;
+    .content {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      .table {
+        display: table;
+        height: 100%;
+        width: 100%;
+        background: black;
+
+        .table-cell {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          height: 100%;
+          width: 100%;
+          background-position:center center;
+          background-repeat:no-repeat;
+          background-size:contain;
+
+          //background: black;
+          border: $border;
+
+          img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+          }
+
+        }
+
+      }
     }
   }
-
-  .admin {
-    position: absolute;
-    right: 10px;
-    top: 6px;
-  }
-
 }
 
 .about {

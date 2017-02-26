@@ -19,6 +19,7 @@ elixir((mix) => {
         .copy('resources/assets/fonts/', 'public/fonts')
         .scripts('edit_form.js')
         .scripts('pswp_settings.js')
-        .version(['css/app.css', 'js/edit_form.js', 'js/pswp_settings.js'], 'public');
+        .scripts('fineuploader_settings.js')
+        .version(['css/app.css', 'js/edit_form.js', 'js/pswp_settings.js', 'js/fineuploader_settings.js'], 'public');
 });
 

@@ -11,9 +11,14 @@
     <div class="box event">
             <a class="left button" href="{{ route('events.index') }}"><i class="fa fa-arrow-circle-left"></i> Zurück</a>
         @if($event->gallery)
-            <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Gallerie</a>
+            <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Galerie</a>
         @endif
         <h3 class="glow left">{{ $event->printDate() }}</h3>
+        <form method="post" action="{{ route('events.destroy',$event) }}">
+            {{ csrf_field() }}
+            {{ method_field('delete') }}
+            <button type="submit" class="right"><i class="fa fa-minus-circle"></i> Löschen</button>
+        </form>
         <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Beginn: {{ $event->printTime() }}</span>
         <div class="clear"></div>
         <hr>
@@ -25,7 +30,7 @@
 @endsection
 
 @section('js')
-    @include('includes.photoswipe')
+    @include('includes.js.photoswipe')
 @endsection
 
 @section('css')

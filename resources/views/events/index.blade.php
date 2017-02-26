@@ -43,11 +43,6 @@
                         <a class="button left" href="{{ route('events.show', $event) }}"><i class="fa fa-info-circle"></i> Details</a>
                         @if (Auth::check() && Auth::user()->admin == 1)
                             <a class="button left" href="{{ route('events.edit', $event) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
-                            <form method="post" action="{{ route('events.destroy',$event) }}">
-                                {{ csrf_field() }}
-                                {{ method_field('delete') }}
-                                <button type="submit" class="stretch"><i class="fa fa-minus-circle"></i> Löschen</button>
-                            </form>
                         @endif
                     </div>
                 </div>

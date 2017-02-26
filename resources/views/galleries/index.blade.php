@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.fullsize')
 
 @section('title')
     Hexenhaus e.V {{-- TODO: insert dynamic title --}}
@@ -9,35 +9,30 @@
     @include('includes.infobox')
     @if (Auth::check() && Auth::user()->admin == 1)
         <div class="box">
-            <a href="{{ route('galleries.create') }}" class="table">
-                <div class="cell">
-                    <h3 class="glow"><i class="fa fa-plus-circle"></i> Neue Gallerie hinzufügen</h3>
-                </div>
+            <a href="{{ route('galleries.create') }}">
+                <h3 class="glow"><i class="fa fa-plus-circle"></i> Neue Gallerie hinzufügen</h3>
             </a>
         </div>
     @endif
     @foreach($galleries as $gallery)
         <div class="box gallery">
-            @if (Auth::check() && Auth::user()->admin == 1)
-                <a class="button left" href="{{ route('galleries.edit', $gallery) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
-                <form method="post" action="{{ route('galleries.destroy',$gallery) }}">
-                    {{ csrf_field() }}
-                    {{ method_field('delete') }}
-                    <button type="submit" class="left"><i class="fa fa-minus-circle"></i> Löschen</button>
-                </form>
-            @endif
             <a class="left" href="{{ route('galleries.show', $gallery) }}">
                 <h3 class="glow">{{ $gallery->event->printDate() }}</h3>
             </a>
+            @if (Auth::check() && Auth::user()->admin == 1)
+                <a class="button right" href="{{ route('galleries.show', $gallery) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
+            @endif
             <div class="clear"></div>
             <hr>
             @foreach($gallery->pics as $pic)
-                <div class="col-2">
-                    <a href="/images/uploads/gallery/{{ $pic->filename }}" class="table swipe" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}">
-                        <div class="cell">
-                            <img src="/images/uploads/gallery/{{ $pic->thumbnail() }}" alt="{{ $pic->name }}" itemprop="thumbnail">
+                <div class="col-1">
+                    <div class="square-1">
+                        <div class="content">
+                            <div class="table">
+                                <a class="table-cell swipe" href="/images/uploads/galleries/{{$gallery->id}}/{{ $pic->filename }}" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}" style="background-image: url('/images/uploads/galleries/{{$gallery->id}}/{{ $pic->thumbnail() }}')"></a>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -49,7 +44,7 @@
 @endsection
 
 @section('js')
-    @include('includes.photoswipe')
+    @include('includes.js.photoswipe')
 @endsection
 
 @section('css')

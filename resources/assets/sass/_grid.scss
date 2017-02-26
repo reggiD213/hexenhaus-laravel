@@ -20,6 +20,10 @@
   padding: 7.5px;
 }
 
+.col-1 {
+  width: 33.33%;
+}
+
 [class*='col-static-'] {
   /*-- no gutter --*/
   padding: 0;

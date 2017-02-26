@@ -36,7 +36,7 @@ class Event extends Model
 
     public function time()
     {
-        return $this->datetime->format('h:i');
+        return $this->datetime->format('H:i');
     }
 
     public function printDate()

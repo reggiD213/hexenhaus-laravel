@@ -40,7 +40,7 @@
 @endsection
 
 @section('js')
-    @include('includes.photoswipe')
+    @include('includes.js.photoswipe')
 @endsection
 
 @section('css')
