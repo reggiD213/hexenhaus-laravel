@@ -3973,6 +3973,44 @@ footer a.freefm:hover {
   padding-right: 45px;
 }
 
+.gallery .uploader {
+  position: relative;
+}
+
+.gallery .uploader .uploaderwrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border: none;
+  background: black;
+  line-height: 35px;
+}
+
+.gallery .uploader .uploaderwrapper .uploaderdrop {
+  background: #C0C0C0;
+  opacity: 0.5;
+}
+
+.gallery .uploader .uploaderwrapper .button {
+  width: 100%;
+  background: black;
+  line-height: 1.3em;
+}
+
+.gallery .uploader .uploaderwrapper .progressbarwrapper {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid #333333;
+  background: #111111;
+  height: 25px;
+}
+
+.gallery .uploader .uploaderwrapper .progressbarwrapper .progressbar {
+  background: #C0C0C0;
+  border-radius: 0;
+  height: 23px;
+}
+
 .gallery h3, .gallery span {
   line-height: 36px;
 }

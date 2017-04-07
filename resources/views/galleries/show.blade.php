@@ -12,7 +12,7 @@
     <div class="box gallery">
         <a class="left button" href="{{ route('galleries.index') }}"><i class="fa fa-arrow-circle-left"></i> Zurück</a>
         <a class="left button" href="{{ route('events.show', $gallery->event) }}">Zum Event</a>
-        <h3 class=" left glow">{{ $gallery->event->printDate() }}</h3>
+        <h3 class=" left glow">{{ $gallery->event->name }}</h3>
 
         @if (Auth::check() && Auth::user()->admin == 1)
             <form method="post" action="{{ route('galleries.destroy',$gallery) }}">
@@ -28,7 +28,7 @@
                 <div class="square-1">
                     <div class="content">
                         <div class="table">
-                            <div class="uploader" id="uploader"></div>
+                            <div class="table-cell uploader" id="uploader"></div>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
     <link rel="stylesheet" href="/libs/photoswipe/photoswipe.css">
     <link rel="stylesheet" href="/libs/photoswipe/default-skin/default-skin.css">
 
-    <link href="/libs/fine-uploader/fine-uploader-gallery.css" rel="stylesheet">
+    <link href="/libs/fine-uploader/fine-uploader-gallery.min.css" rel="stylesheet">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection

@@ -7,15 +7,15 @@
 <script src="/libs/fine-uploader/fine-uploader.min.js"></script>
 
 <script type="text/template" id="qq-template">
-    <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Drop files here">
-        <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+    <div class="qq-uploader-selector qq-uploader qq-gallery uploaderwrapper" qq-drop-area-text="Bilder hier rein ziehen oder Button drücken!">
+        <div class="qq-upload-drop-area-selector qq-upload-drop-area uploaderdrop" qq-hide-dropzone>
             <span class="qq-upload-drop-area-text-selector"></span>
         </div>
         <div class="qq-upload-button-selector button">
-            <div>Upload a file</div>
+            <div>Bilder hochladen</div>
         </div>
-        <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container" style="border: 1px solid red;">
-            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+        <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container progressbarwrapper">
+            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar progressbar"></div>
         </div>
         <span class="qq-drop-processing-selector qq-drop-processing">
             <span>Processing dropped files...</span>

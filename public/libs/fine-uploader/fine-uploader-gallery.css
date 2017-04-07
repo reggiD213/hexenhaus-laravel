@@ -32,7 +32,7 @@
     0 -2px 12px rgba(0, 0, 0, 0.08) inset
 }
 .qq-gallery .qq-upload-button-hover {
-    //background: #33B6CC;
+    background: #33B6CC;
 }
 .qq-gallery .qq-upload-button-focus {
     outline: 1px dotted #000000;
@@ -43,14 +43,14 @@
 ------------------------------------------ */
 .qq-gallery.qq-uploader {
     position: relative;
-    //min-height: 200px;
+    min-height: 200px;
     height: 250px;
-    //max-height: 490px;
+    max-height: 490px;
     overflow-y: hidden;
     width: inherit;
-    //border-radius: 6px;
+    border-radius: 6px;
     border: 1px solid green;
-    //background-color: #FAFAFA;
+    background-color: #FAFAFA;
     padding: 20px;
 }
 .qq-gallery.qq-uploader:before {

@@ -360,6 +360,45 @@ footer {
 
 .gallery {
 
+  .uploader {
+    
+    position: relative;
+    
+    .uploaderwrapper {
+    
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      border: none;
+      background: black;
+      line-height: 35px;
+      
+      .uploaderdrop {
+        background: $primary_color;
+        opacity: 0.5;
+      }
+
+      .button {
+        width: 100%;
+        background: black;
+        line-height: 1.3em;
+      }
+      .progressbarwrapper {
+          margin-top: 10px;
+          width: 100%;
+          border: $border;
+          background: #111111;
+          height: 25px;
+          
+          .progressbar {
+            background: $primary_color;
+            border-radius: 0;
+            height: 23px;
+          }
+      }
+    }
+  }
+  
   h3, span {
     line-height: 36px
   }
