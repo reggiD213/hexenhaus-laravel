@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Gallery;
+use App\Event;
 use Illuminate\Http\Request;
 
 use Intervention\Image\Facades\Image;
@@ -17,7 +18,7 @@ class GalleriesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'show']);
+        $this->middleware('admin')->only(['store', 'create', 'destroy']);
     }
 
     /**
@@ -32,7 +33,7 @@ class GalleriesController extends Controller
             $query->orderBy('datetime', 'desc');
         }], 'pics')->paginate(config('custom.galleries_per_page'));
         */
-        $galleries = Gallery::all();
+        $galleries = Gallery::paginate(config('custom.galleries_per_page'));
         return view('galleries.index', compact('galleries'));
     }
 
@@ -43,7 +44,10 @@ class GalleriesController extends Controller
      */
     public function create()
     {
-        return view('galleries.create');
+        $events = Event::bygone()->doesntHave('gallery')->orderBy('datetime', 'desc')->get();
+        
+
+        return view('galleries.create', compact('events'));
     }
 
     /**
@@ -82,27 +86,10 @@ class GalleriesController extends Controller
         return view('galleries.show', compact('gallery'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function getAjax(Gallery $gallery)
     {
-
+        return $gallery;
     }
 
     /**

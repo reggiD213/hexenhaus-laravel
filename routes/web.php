@@ -29,12 +29,11 @@ Route::get('events_archive', ['uses' => 'EventsController@indexBygone', 'as' => 
 
 Route::resource('bands', 'BandsController', ['except' => ['show']]);
 
-//Route::resource('pics', 'PicsController', ['except' => ['show']]);
 Route::post('pics', 'PicsController@store');
-Route::delete('pics', ['uses' =>'PicsController@destroy', 'as' => 'pics.destroy']);
+Route::delete('pics/{pic}', ['uses' =>'PicsController@destroy', 'as' => 'pics.destroy']);
 
-Route::resource('galleries', 'GalleriesController');
-
+Route::resource('galleries', 'GalleriesController', ['except' => ['update', 'edit']]);
+Route::get('api/galleries/{gallery}', 'GalleriesController@getAjax');
 Route::resource('newsfeeds', 'NewsfeedsController');
 
 

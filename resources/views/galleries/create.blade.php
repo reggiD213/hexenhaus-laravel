@@ -18,8 +18,12 @@
         {{ csrf_field() }}
 
         <div class="form-group{{ $errors->has('event') ? ' error' : ''}}">
-            <label for="gallery_event">Event:</label>
-            <input id="gallery_event" type="text" value="{{ old('name') }}" name="event" autocomplete="off" placeholder="EventID eingeben">
+            <label for="gallery_event">Event:</label><br>
+            <select name="event">
+                @foreach($events as $event)
+                    <option value="{{ $event->id }}">{{ $event->printDate() . " | " .  $event->name }}</option>
+                @endforeach
+            </select>
             @if ($errors->has('event'))
                 <span>{{ $errors->first('event') }}</span>
             @endif

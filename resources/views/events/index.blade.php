@@ -41,6 +41,9 @@
                         <span class="dull">Eintritt: {{ $event->printPrice() }} €, Beginn: {{ $event->printTime() }}</span>
                         <hr>
                         <a class="button left" href="{{ route('events.show', $event) }}"><i class="fa fa-info-circle"></i> Details</a>
+                        @if ($event->tickets)
+                            <a class="button left" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-shopping-cart"></i> Tickets</a>
+                        @endif
                         @if (Auth::check() && Auth::user()->admin == 1)
                             <a class="button left" href="{{ route('events.edit', $event) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
                         @endif

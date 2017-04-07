@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Newsfeed;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,8 +16,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //global ViewShares
-        $newsfeeds = Newsfeed::all();
-        view()->share('newsfeeds', $newsfeeds);
+        if (Schema::hasTable('newsfeeds'))
+        {
+            $newsfeeds = Newsfeed::all();
+            view()->share('newsfeeds', $newsfeeds);
+        }
     }
 
     /**

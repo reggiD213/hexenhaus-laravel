@@ -14,11 +14,16 @@
             <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Galerie</a>
         @endif
         <h3 class="glow left">{{ $event->printDate() }}</h3>
-        <form method="post" action="{{ route('events.destroy',$event) }}">
-            {{ csrf_field() }}
-            {{ method_field('delete') }}
-            <button type="submit" class="right"><i class="fa fa-minus-circle"></i> Löschen</button>
-        </form>
+        @if (Auth::check() && Auth::user()->admin == 1)
+            <form method="post" action="{{ route('events.destroy',$event) }}">
+                {{ csrf_field() }}
+                {{ method_field('delete') }}
+                <button type="submit" class="right"><i class="fa fa-minus-circle"></i> Löschen</button>
+            </form>
+        @endif
+        @if ($event->tickets)
+            <a class="button right" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-shopping-cart"></i> Tickets</a>
+        @endif
         <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Beginn: {{ $event->printTime() }}</span>
         <div class="clear"></div>
         <hr>

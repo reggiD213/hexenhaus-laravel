@@ -63,6 +63,13 @@
                 <span>{{ $errors->first('price') }}</span>
             @endif
         </div>
+        <div class="form-group{{ $errors->has('tickets') ? ' error' : ''}}">
+            <label for="event_tickets">Ticketvorverkauf:</label>
+            <input id="event_tickets" type="checkbox" value="1" name="tickets" autocomplete="off" {{ old('tickets') == 1 ? "checked" : $event->tickets == 1 ? "checked" : "" }}>
+            @if ($errors->has('tickets'))
+                <span>{{ $errors->first('tickets') }}</span>
+            @endif
+        </div>
         <div class="form-group{{ $errors->has('image') ? ' error' : ''}}">
             <label for="event_thumb">Bild:<br>
                 <img id="image" src="/images/uploads/events/{{ $event->id }}/{{ $event->thumbnail() }}">

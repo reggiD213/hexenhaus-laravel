@@ -93,7 +93,7 @@ class EventsController extends Controller
         $event->desc_long = clean($request->desc_long);
         $event->price = $request->price;
         $event->datetime = $request->date . ' ' . $request->time . ':00';
-
+        $event->tickets = $request->tickets == 1 ? 1 : 0;
         $event->save();
 
         //resize and move the image(s)
@@ -160,7 +160,7 @@ class EventsController extends Controller
         $event->price = $request->price;
         $event->guests = $request->guests;
         $event->datetime = $request->date . ' ' . $request->time . ':00';
-
+        $event->tickets = $request->tickets == 1 ? 1 : 0;
         $event->save();
 
         //resize and move the image(s)

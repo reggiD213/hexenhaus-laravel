@@ -84,10 +84,10 @@
 </script>
 
 <script>
-    var gallery_id = '{{ $gallery->id }}';
+    var gallery_id = {{ json_encode($gallery->id) }}
     var uploader = new qq.FineUploader({
         element: document.getElementById("uploader"),
-        debug: true,
+        debug: {{ json_encode(config('app.debug')) }},
         request: {
             endpoint: '/pics',
             customHeaders: {
@@ -98,10 +98,13 @@
             }
 
         },
-        onAllComplete: function() {
-            location.reload();
+        callbacks: {
+            onAllComplete: function () {
+                console.log('fertig');
+
+            },
         }
     });
-</script>
 
-{{--<script src="{{ elixir("js/fineuploader_settings.js", "") }}"></script>--}}
+
+</script>

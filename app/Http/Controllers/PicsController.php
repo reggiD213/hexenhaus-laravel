@@ -17,29 +17,7 @@ class PicsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin')->except('index');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $pics = Pic::all();
-
-        return view('pics.index', compact('pics'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('pics.create');
+        $this->middleware('admin');
     }
 
     /**
@@ -77,61 +55,8 @@ class PicsController extends Controller
         $pic->save();
 
         return response()->json([
-            'bla' => $request->all(),
             'success' => true
         ], 200);
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Pic $pic
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pic $pic)
-    {
-        return view('pics.edit', compact('pic'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Pic $pic
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pic $pic)
-    {
-
-        $pic->gallery_id = $request->gallery_id ? $request->gallery_id : 1;
-
-        if ($request->hasFile('image')) {
-            //resize and move the image(s)
-            $image = $request->file('image');
-            $time = time();
-
-            $filename = $time . '_' . $image->getClientOriginalName();
-            $thumbnail = $time . '_thumb_' . $image->getClientOriginalName();
-
-            $pic->filename = $filename;
-
-            $path = public_path('images/uploads/gallery/' . $filename);
-            $thumbpath = public_path('images/uploads/gallery/' . $thumbnail);
-
-            $intervention = Image::make(
-                $image->getRealPath())->widen(1920, function ($constraint) {
-                    $constraint->upsize();
-                })->save($path);
-            Image::make($image->getRealPath())->widen(227)->save($thumbpath);
-
-            $pic->height = $intervention->height();
-            $pic->width = $intervention->width();
-        }
-
-        $pic->save();
-
-        return redirect(route('pics.index'))->withInfo('Bild erfolgreich geändert!');
 
     }
 
@@ -143,14 +68,13 @@ class PicsController extends Controller
      */
     public function destroy(Pic $pic)
     {
-        dd($pic->id);
         $pic->delete();
-        unlink(public_path('images/uploads/galleries/' . $pic->gallery . '/' . $pic->thumbnail()));
-        unlink(public_path('images/uploads/galleries/' . $pic->gallery . '/' . $pic->filename));
-        dd('jup');
+        unlink(public_path('images/uploads/galleries/' . $pic->gallery->id . '/' . $pic->thumbnail()));
+        unlink(public_path('images/uploads/galleries/' . $pic->gallery->id . '/' . $pic->filename));
 
 
-        return redirect(route('pics.index'))->withInfo('Bild erfolgreich gelöscht!');
+
+        return redirect(route('galleries.show', $pic->gallery))->withInfo('Bild erfolgreich gelöscht!');
     }
 
 }

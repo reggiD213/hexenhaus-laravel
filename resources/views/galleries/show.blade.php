@@ -8,6 +8,7 @@
 @section('content')
     <h2>Bildergalerie, {{ $gallery->event->printDate() }}</h2>
     <hr>
+    @include('includes.infobox')
     <div class="box gallery">
         <a class="left button" href="{{ route('galleries.index') }}"><i class="fa fa-arrow-circle-left"></i> Zurück</a>
         <a class="left button" href="{{ route('events.show', $gallery->event) }}">Zum Event</a>
