@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
-    TODO: Profile Page
+    
 @endsection
 
 @section('sidebar')
-    <h2>Deine Veranstaltungen</h2>
+    <h2>Member Area</h2>
     <hr>
     @if (session('status'))
         <div class="box">

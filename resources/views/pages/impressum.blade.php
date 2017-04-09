@@ -34,11 +34,15 @@
             <strong>Vertretungsberechtigte Personen:</strong><br>
         <ul>
             <li>
-                Stefan Huber, Vorstand, Schatzmeister<br>
+                Frank Ellwanger, Vorstand, Schatzmeister<br>
                 Adresse s.o.
             </li>
             <li>
                 Patrick Koch, Vorstand, Schriftführer<br>
+                Adresse s.o.
+            </li>
+            <li>
+                Henning Bock, Vorstand, Schatzmeister<br>
                 Adresse s.o.
             </li>
             <li>
@@ -50,17 +54,8 @@
 
         <p>
             <strong>Vereinsregister:</strong><br>
-            Registergericht:<br>
-            Registernummer: VR<br>
-        </p>
-        <p>
-            <strong>Aufsichtsbehörde:</strong><br>
-            Name:<br>
-            Adresse:<br>
-        </p>
-        <p>
-            <strong>Umsatzsteuer- oder Wirtschaftsidentifikationsnummer:</strong><br>
-            sofern vergeben<br>
+            Registergericht: Ulm<br>
+            Registernummer: VR 720 123<br>
         </p>
         <p>
             <strong>Verantwortlicher gemäß § 55 Abs. 2 RStV:</strong><br>

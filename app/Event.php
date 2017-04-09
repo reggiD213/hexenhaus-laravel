@@ -26,7 +26,10 @@ class Event extends Model
 
     public function printPrice()
     {
-        return number_format($this->price, 2, ',', '.');
+        if ($this->price == 66)
+            return "wird noch bekannt gegeben";
+        else
+            return number_format($this->price, 2, ',', '.');
     }
 
     public function date()
