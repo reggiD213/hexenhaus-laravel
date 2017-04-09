@@ -39,7 +39,7 @@
     <div class="box">
         <button class="big"><a href="{{ route('newsfeeds.index') }}"><i class="fa fa-arrow-circle-o-left"></i> Zurück</a></button>
         <hr>
-        <form method="post" action="{{ route('newsfeeds.destroy',$newsfeed) }}">
+        <form method="post" action="{{ route('newsfeeds.destroy', $newsfeed) }}">
             {{ csrf_field() }}
             {{ method_field('delete') }}
             <button type="submit" class="big"><i class="fa fa-minus-circle"></i> Löschen</button>

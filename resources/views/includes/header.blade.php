@@ -12,7 +12,7 @@
                         @foreach($newsfeeds as $newsfeed)
                             <li>
                                 <div>
-                                    {{ $newsfeed->text }}
+                                    {!! $newsfeed->text !!}
                                 </div>
                             </li>
                         @endforeach

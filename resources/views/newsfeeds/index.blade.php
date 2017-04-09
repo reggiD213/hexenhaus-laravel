@@ -19,16 +19,16 @@
             <li class="box">
                 <div class="row">
                     <div class="col-static-4">
-                        {{ $newsfeed->text }}
+                        {!! $newsfeed->text !!}
                         <div class="vr right"></div>
                     </div>
                     <div class="col-static-2">
-                        <a class="button" href="{{ route('newsfeeds.edit', $newsfeed) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
+                        <button class="big" href="{{ route('newsfeeds.edit', $newsfeed) }}"><i class="fa fa-cog"></i> Bearbeiten</button>
                         <form method="post" action="{{ route('newsfeeds.destroy', $newsfeed) }}">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
                             <div class="form-group">
-                                <button type="submit"><i class="fa fa-minus-circle"></i> Löschen</button>
+                                <button class="big" type="submit"><i class="fa fa-minus-circle"></i> Löschen</button>
                             </div>
                         </form>
 
