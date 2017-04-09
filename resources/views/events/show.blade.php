@@ -22,7 +22,7 @@
             </form>
         @endif
         @if ($event->tickets)
-            <a class="button right" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-shopping-cart"></i> Tickets</a>
+            <a class="button right" target="_blank" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-shopping-cart"></i> Tickets</a>
         @endif
         <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Beginn: {{ $event->printTime() }}</span>
         <div class="clear"></div>

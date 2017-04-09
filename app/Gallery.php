@@ -30,4 +30,14 @@ class Gallery extends Model
         $count = static::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$' and id != '{$this->id}'")->count();
         $this->attributes['slug'] = $count ? "{$slug}-{$count}" : $slug;
     }
+
+     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -67,7 +67,9 @@ class GalleriesController extends Controller
         $gallery = new Gallery;
 
         $gallery->event_id = $request->event;
-
+        $event = Event::where('id', $gallery->event_id)->first();
+        //dd($event);
+        $gallery->slug = $event->slug;
         $gallery->save();
 
         mkdir(public_path('images/uploads/galleries/' . $gallery->id));

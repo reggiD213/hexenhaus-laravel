@@ -100,8 +100,7 @@
         },
         callbacks: {
             onAllComplete: function () {
-                console.log('fertig');
-
+                window.location.reload(true); 
             },
         }
     });
