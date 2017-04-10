@@ -11,6 +11,11 @@ class Gallery extends Model
         return $this->hasMany('App\Pic');
     }
 
+    public function picsPreview()
+    {
+        return $this->hasMany('App\Pic')->take(8);
+    }
+
     public function event()
     {
         return $this->belongsTo('App\Event');

@@ -17,7 +17,7 @@
     @foreach($galleries as $gallery)
         <div class="box gallery">
             <a class="left" href="{{ route('galleries.show', $gallery) }}">
-                <h3 class="glow">{{ $gallery->event->printDate() }}</h3>
+                <h3 class="glow">{{ $gallery->event->printShortDate() . ' | ' . $gallery->event->name }}</h3>
             </a>
             @if (Auth::check() && Auth::user()->admin == 1)
                 <a class="button right" href="{{ route('galleries.show', $gallery) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
@@ -37,6 +37,9 @@
             @endforeach
         </div>
     @endforeach
+
+    {{ $galleries->links('pagination.default') }}
+    
 @endsection
 
 @section('sidebar')

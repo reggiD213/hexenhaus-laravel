@@ -47,6 +47,12 @@ class Event extends Model
         return $this->datetime->formatLocalized('%A, %d.%m.%Y');
     }
 
+    public function printShortDate()
+    {
+        return $this->datetime->formatLocalized('%d.%m.%y');
+    }
+    
+
     public function printTime()
     {
         return $this->datetime->formatLocalized('%H:%M');

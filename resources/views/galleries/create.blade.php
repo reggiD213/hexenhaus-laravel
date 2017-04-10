@@ -21,7 +21,7 @@
             <label for="gallery_event">Event:</label><br>
             <select name="event">
                 @foreach($events as $event)
-                    <option value="{{ $event->id }}">{{ $event->printDate() . " | " .  $event->name }}</option>
+                    <option value="{{ $event->id }}">{{ $event->printShortDate() . " | " .  $event->name }}</option>
                 @endforeach
             </select>
             @if ($errors->has('event'))
