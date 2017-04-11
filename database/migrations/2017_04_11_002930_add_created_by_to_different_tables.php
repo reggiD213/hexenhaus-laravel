@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeysToGalleriesTable extends Migration
+class AddCreatedByToDifferentTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddForeignKeysToGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('galleries', function (Blueprint $table) {
-            $table->foreign('event_id')->references('id')->on('events');
-        });
+        //
     }
 
     /**
@@ -25,8 +23,6 @@ class AddForeignKeysToGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('galleries', function (Blueprint $table) {
-            $table->dropForeign(['event_id']);
-        });
+        //
     }
 }

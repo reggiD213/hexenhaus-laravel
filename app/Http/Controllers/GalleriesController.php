@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Gallery;
 use App\Event;
 use Illuminate\Http\Request;
 
@@ -28,13 +27,9 @@ class GalleriesController extends Controller
      */
     public function index()
     {
-        /*
-        $galleries = Gallery::with(['event' => function ($query) { //TODO: verify if this works (I doubt it.)
-            $query->orderBy('datetime', 'desc');
-        }], 'pics')->paginate(config('custom.galleries_per_page'));
-        */
-        $galleries = Gallery::paginate(config('custom.galleries_per_page'));
-        return view('galleries.index', compact('galleries'));
+        $events = Event::bygone()->where('hasPics','=','1')->orderBy('datetime', 'desc')->get();
+
+        return view('galleries.index', compact('events'));
     }
 
     /**
@@ -44,9 +39,8 @@ class GalleriesController extends Controller
      */
     public function create()
     {
-        $events = Event::bygone()->doesntHave('gallery')->orderBy('datetime', 'desc')->get();
+        $events = Event::bygone()->where('hasPics','=','0')->orderBy('datetime', 'desc')->get();
         
-
         return view('galleries.create', compact('events'));
     }
 
@@ -63,16 +57,12 @@ class GalleriesController extends Controller
             'event' => 'required|exists:events,id'
         ]);
 
-        //create Model
-        $gallery = new Gallery;
+        //get Model
+        $event = Event::where('id', $request->event)->first();
+        $event->hasPics = 1;
+        $event->save();
 
-        $gallery->event_id = $request->event;
-        $event = Event::where('id', $gallery->event_id)->first();
-        //dd($event);
-        $gallery->slug = $event->slug;
-        $gallery->save();
-
-        mkdir(public_path('images/uploads/galleries/' . $gallery->id));
+        mkdir(public_path('images/uploads/events/' . $event->date() . '/gallery'));
 
         return redirect(route('galleries.index'))->withInfo('Galerie erfolgreich erstellt!');
     }
@@ -80,32 +70,27 @@ class GalleriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Gallery $gallery
+     * @param  Event $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Gallery $gallery)
+    public function show(Event $event)
     {
-        return view('galleries.show', compact('gallery'));
-    }
-
-
-    public function getAjax(Gallery $gallery)
-    {
-        return $gallery;
+        return view('galleries.show', compact('event'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Gallery $gallery
+     * @param  Event $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function destroy(Event $event)
     {
-        array_map('unlink', glob(public_path('images/uploads/galleries/' . $gallery->id . '/*.*')));
-        rmdir(public_path('images/uploads/galleries/' . $gallery->id));
+        array_map('unlink', glob(public_path('images/uploads/events/' . $event->date() . '/gallery/*.*')));
+        rmdir(public_path('images/uploads/events/' . $event->date() . '/gallery'));
 
-        $gallery->delete();
+        $event->hasPics = 0;
+        $event->save();
 
         return redirect(route('galleries.index'))->withInfo('Galerie erfolgreich gelöscht!');
     }

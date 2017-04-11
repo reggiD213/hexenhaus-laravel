@@ -32,8 +32,14 @@ Route::resource('bands', 'BandsController', ['except' => ['show']]);
 Route::post('pics', 'PicsController@store');
 Route::delete('pics/{pic}', ['uses' =>'PicsController@destroy', 'as' => 'pics.destroy']);
 
-Route::resource('galleries', 'GalleriesController', ['except' => ['update', 'edit']]);
-Route::get('api/galleries/{gallery}', 'GalleriesController@getAjax');
+//Route::resource('galleries', 'GalleriesController', ['except' => ['update', 'edit']]);
+Route::post('galleries', ['uses' => 'GalleriesController@store', 'as' => 'galleries.store']);
+Route::get('galleries', ['uses' => 'GalleriesController@index', 'as' => 'galleries.index']);
+Route::get('galleries/create', ['uses' => 'GalleriesController@create', 'as' => 'galleries.create']);
+Route::get('galleries/{event}', ['uses' => 'GalleriesController@show', 'as' => 'galleries.show']);
+Route::delete('galleries/{event}', ['uses' => 'GalleriesController@destroy', 'as' => 'galleries.destroy']);
+//Route::get('api/galleries/{event}', 'GalleriesController@getAjax');
+
 Route::resource('newsfeeds', 'NewsfeedsController');
 
 

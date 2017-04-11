@@ -26,7 +26,7 @@ class AddForeignKeysToPicsTable extends Migration
     public function down()
     {
         Schema::table('pics', function (Blueprint $table) {
-            $table->dropForeign('gallery_id');
+            $table->dropForeign(['gallery_id']);
         });
     }
 }

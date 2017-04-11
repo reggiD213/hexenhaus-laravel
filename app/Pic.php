@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pic extends Model
 {
-    public function gallery()
+    public function event()
     {
-        return $this->belongsTo('App\Gallery');
+        return $this->belongsTo('App\Event');
     }
 
     public function thumbnail()

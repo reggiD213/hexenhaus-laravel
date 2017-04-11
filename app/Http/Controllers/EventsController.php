@@ -97,7 +97,7 @@ class EventsController extends Controller
         $event->save();
 
         //resize and move the image(s)
-        mkdir(public_path('images/uploads/events/' . $event->id));
+        mkdir(public_path('images/uploads/events/' . $event->date()));
         if ($request->hasFile('image')) {
             $image = $request->file('image');
 
@@ -108,9 +108,9 @@ class EventsController extends Controller
             $thumbnail = $time . '_thumb_' . $image->getClientOriginalName();
 
             $event->image = $filename;
-
-            $path = public_path('images/uploads/events/' . $event->id . '/' . $filename);
-            $thumbpath = public_path('images/uploads/events/' . $event->id . '/' . $thumbnail);
+        
+            $path = public_path('images/uploads/events/' . $event->date() . '/' . $filename);
+            $thumbpath = public_path('images/uploads/events/' . $event->date() . '/' . $thumbnail);
 
             $intervention = Image::make(
                 $image->getRealPath())->widen(1920, function ($constraint) {
@@ -175,8 +175,8 @@ class EventsController extends Controller
 
             $event->image = $filename;
 
-            $path = public_path('images/uploads/events/' . $event->id . '/' . $filename);
-            $thumbpath = public_path('images/uploads/events/' . $event->id . '/' . $thumbnail);
+            $path = public_path('images/uploads/events/' . $event->date() . '/' . $filename);
+            $thumbpath = public_path('images/uploads/events/' . $event->date() . '/' . $thumbnail);
 
             $intervention = Image::make(
                 $image->getRealPath())->widen(1920, function ($constraint) {
@@ -201,9 +201,15 @@ class EventsController extends Controller
      */
     public function destroy(Event $event)
     {
-        array_map('unlink', glob(public_path('images/uploads/events/' . $event->id . '/*.*')));
-        rmdir(public_path('images/uploads/events/' . $event->id));
-
+        if ($event->hasPics)
+        {
+            array_map('unlink', glob(public_path('images/uploads/events/' . $event->date() . 'gallery/*.*')));
+            rmdir(public_path('images/uploads/events/' . $event->date() . 'gallery'));
+        }
+        
+        array_map('unlink', glob(public_path('images/uploads/events/' . $event->date() . '/*.*')));
+        rmdir(public_path('images/uploads/events/' . $event->date()));
+        
         $event->delete();
 
         return redirect(route('events.index'))->withInfo('Veranstaltung erfolgreich gelöscht!');

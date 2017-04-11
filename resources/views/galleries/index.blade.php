@@ -14,22 +14,22 @@
             </a>
         </div>
     @endif
-    @foreach($galleries as $gallery)
+    @foreach($events as $event)
         <div class="box gallery">
-            <a class="left" href="{{ route('galleries.show', $gallery) }}">
-                <h3 class="glow">{{ $gallery->event->printShortDate() . ' | ' . $gallery->event->name }}</h3>
+            <a class="left" href="{{ route('galleries.show', $event) }}">
+                <h3 class="glow">{{ $event->printShortDate() . ' | ' . $event->name }}</h3>
             </a>
             @if (Auth::check() && Auth::user()->admin == 1)
-                <a class="button right" href="{{ route('galleries.show', $gallery) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
+                <a class="button right" href="{{ route('galleries.show', $event) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
             @endif
             <div class="clear"></div>
             <hr>
-            @foreach($gallery->pics as $pic)
+            @foreach($event->pics as $pic)
                 <div class="col-1">
                     <div class="square-1">
                         <div class="content">
                             <div class="table">
-                                <a class="table-cell swipe" href="/images/uploads/galleries/{{$gallery->id}}/{{ $pic->filename }}" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}" style="background-image: url('/images/uploads/galleries/{{$gallery->id}}/{{ $pic->thumbnail() }}')"></a>
+                                <a class="table-cell swipe" href="/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->filename }}" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}" style="background-image: url('/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->thumbnail() }}')"></a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
         </div>
     @endforeach
 
-    {{ $galleries->links('pagination.default') }}
+    {{-- $events->links('pagination.default') --}}
     
 @endsection
 

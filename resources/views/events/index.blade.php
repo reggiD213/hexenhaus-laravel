@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-static-2">
                         <a class="left thumb" href="{{ route('events.show', $event) }}">
-                            <img src="/images/uploads/events/{{ $event->id }}/{{ $event->thumbnail() }}" alt="{{ $event->name }}">
+                            <img src="/images/uploads/events/{{ $event->date() }}/{{ $event->thumbnail() }}" alt="{{ $event->name }}">
                         </a>
                         <div class="vr"></div>
                     </div>

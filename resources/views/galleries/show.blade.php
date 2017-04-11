@@ -6,16 +6,16 @@
 
 
 @section('content')
-    <h2>Bildergalerie, {{ $gallery->event->printDate() }}</h2>
+    <h2>Bildergalerie, {{ $event->printDate() }}</h2>
     <hr>
     @include('includes.infobox')
     <div class="box gallery">
         <a class="left button" href="{{ route('galleries.index') }}"><i class="fa fa-arrow-circle-left"></i> Zurück</a>
-        <a class="left button" href="{{ route('events.show', $gallery->event) }}">Zum Event</a>
-        <h3 class=" left glow">{{ $gallery->event->name }}</h3>
+        <a class="left button" href="{{ route('events.show', $event) }}">Zum Event</a>
+        <h3 class=" left glow">{{ $event->name }}</h3>
 
         @if (Auth::check() && Auth::user()->admin == 1)
-            <form method="post" action="{{ route('galleries.destroy',$gallery) }}">
+            <form method="post" action="{{ route('galleries.destroy', $event) }}">
                 {{ csrf_field() }}
                 {{ method_field('delete') }}
                 <button type="submit" class="right"><i class="fa fa-minus-circle"></i> Löschen</button>
@@ -34,13 +34,13 @@
                 </div>
             </div>
         @endif
-        @foreach($gallery->pics as $pic)
+        @foreach($event->pics as $pic)
             <div class="col-1">
                 <div class="square-1">
                     <div class="content">
                         <div class="table">
-                            <a class="table-cell swipe" href="/images/uploads/galleries/{{$gallery->id}}/{{ $pic->filename }}" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}"
-                               style="background-image: url('/images/uploads/galleries/{{$gallery->id}}/{{ $pic->thumbnail() }}')"></a>
+                            <a class="table-cell swipe" href="/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->filename }}" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}"
+                               style="background-image: url('/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->thumbnail() }}')"></a>
                         </div>
                     </div>
                     @if (Auth::check() && Auth::user()->admin == 1)

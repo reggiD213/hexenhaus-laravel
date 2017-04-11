@@ -72,7 +72,7 @@
         </div>
         <div class="form-group{{ $errors->has('image') ? ' error' : ''}}">
             <label for="event_thumb">Bild:<br>
-                <img id="image" src="/images/uploads/events/{{ $event->id }}/{{ $event->thumbnail() }}">
+                <img id="image" src="/images/uploads/events/{{ $event->date() }}/{{ $event->thumbnail() }}">
             </label>
             <input id="event_thumb" type="file" name="image">
             @if ($errors->has('image'))

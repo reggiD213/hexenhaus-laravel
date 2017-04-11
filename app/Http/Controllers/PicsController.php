@@ -39,10 +39,12 @@ class PicsController extends Controller
         $thumbnail = $time . '_thumb_' . $image->getClientOriginalName();
 
         $pic->filename = $filename;
-        $pic->gallery_id = $request->gallery_id;
+        $pic->event_id = $request->event_id;
 
-        $path = public_path('images/uploads/galleries/' . $pic->gallery_id . '/' .  $filename);
-        $thumbpath = public_path('images/uploads/galleries/' . $pic->gallery_id . '/' . $thumbnail);
+        $path = public_path('images/uploads/events/' . $request->event_date . '/' . 'gallery/' .  $filename);
+        $thumbpath = public_path('images/uploads/events/' . $request->event_date . '/' . 'gallery/' . $thumbnail);
+
+
 
         $intervention = Image::make(
             $image->getRealPath())->widen(1920, function ($constraint) {
@@ -54,6 +56,7 @@ class PicsController extends Controller
         $pic->width = $intervention->width();
         $pic->save();
 
+        
         return response()->json([
             'success' => true
         ], 200);
@@ -69,8 +72,8 @@ class PicsController extends Controller
     public function destroy(Pic $pic)
     {
         $pic->delete();
-        unlink(public_path('images/uploads/galleries/' . $pic->gallery->id . '/' . $pic->thumbnail()));
-        unlink(public_path('images/uploads/galleries/' . $pic->gallery->id . '/' . $pic->filename));
+        unlink(public_path('images/uploads/events/' . $pic->event->date() . '/gallery/' . $pic->thumbnail()));
+        unlink(public_path('images/uploads/events/' . $pic->event->date() . '/gallery/' . $pic->filename));
 
 
 

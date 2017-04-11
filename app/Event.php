@@ -19,9 +19,9 @@ class Event extends Model
         return $this->belongsToMany('App\Band');
     }
 
-    public function gallery()
+    public function pics()
     {
-        return $this->hasOne('App\Gallery');
+        return $this->hasMany('App\Pic');
     }
 
     public function printPrice()
@@ -60,7 +60,7 @@ class Event extends Model
 
     public function getImageAttribute($value)
     {
-        if (!is_file('images/uploads/events/' . $this->id . '/' . $value)) {
+        if (!is_file('images/uploads/events/' . $this->date() . '/' . $value)) {
             return '../not-available.jpg';
         }
         return $value;

@@ -10,7 +10,7 @@
     <hr>
     <div class="box event">
             <a class="left button" href="{{ route('events.index') }}"><i class="fa fa-arrow-circle-left"></i> Zurück</a>
-        @if($event->gallery)
+        @if($event->hasPics)
             <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Galerie</a>
         @endif
         <h3 class="glow left">{{ $event->printDate() }}</h3>
@@ -27,11 +27,12 @@
         <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Beginn: {{ $event->printTime() }}</span>
         <div class="clear"></div>
         <hr>
-        <a href="/images/uploads/events/{{ $event->id }}/{{ $event->image }}" class="swipe" title="{{ $event->title }}" itemprop="contentUrl" data-size="{{ $event->image_width }}x{{ $event->image_height }}" data-index="1">
-            <img class="right" src="/images/uploads/events/{{ $event->id }}/{{ $event->image }}" alt="{{ $event->title }}" itemprop="thumbnail">
+        <a href="/images/uploads/events/{{ $event->date() }}/{{ $event->image }}" class="swipe" title="{{ $event->title }}" itemprop="contentUrl" data-size="{{ $event->image_width }}x{{ $event->image_height }}" data-index="1">
+            <img class="right" src="/images/uploads/events/{{ $event->date() }}/{{ $event->image }}" alt="{{ $event->title }}" itemprop="thumbnail">
         </a>
         <p>{!! $event->desc_long !!}</p>
     </div>
+    
 @endsection
 
 @section('js')

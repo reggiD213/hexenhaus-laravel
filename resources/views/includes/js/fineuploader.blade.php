@@ -84,7 +84,8 @@
 </script>
 
 <script>
-    var gallery_id = {{ json_encode($gallery->id) }}
+    var event_id = {{ json_encode($event->id) }}
+    var event_date = "{{ $event->date() }}"
     var uploader = new qq.FineUploader({
         element: document.getElementById("uploader"),
         debug: {{ json_encode(config('app.debug')) }},
@@ -94,7 +95,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             params: {
-                'gallery_id': gallery_id
+                'event_id': event_id,
+                'event_date': event_date
             }
 
         },
