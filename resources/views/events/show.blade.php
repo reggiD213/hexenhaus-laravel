@@ -25,7 +25,7 @@
             {{--<a class="button right" target="_blank" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-shopping-cart"></i> Tickets</a>--}}
             <a class="button right" target="_blank" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-ulm-tickets"></i> Tickets</a>
         @endif
-        <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Beginn: {{ $event->printTime() }}</span>
+        <span class="dull right">Eintritt: {{ $event->printPrice() }}€ , Einlass: {{ $event->printTime() }}</span>
         <div class="clear"></div>
         <hr>
         <a href="/images/uploads/events/{{ $event->date() }}/{{ $event->image }}" class="swipe" title="{{ $event->title }}" itemprop="contentUrl" data-size="{{ $event->image_width }}x{{ $event->image_height }}" data-index="1">

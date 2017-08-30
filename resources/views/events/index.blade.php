@@ -38,7 +38,7 @@
                         </a>
                         <hr>
                         <p>{{ $event->desc_short }}</p>
-                        <span class="dull">Eintritt: {{ $event->printPrice() }} €, Beginn: {{ $event->printTime() }}</span>
+                        <span class="dull">Eintritt: {{ $event->printPrice() }} €, Einlass: {{ $event->printTime() }}</span>
                         <hr>
                         <a class="button left" href="{{ route('events.show', $event) }}"><i class="fa fa-info-circle"></i> Details</a>
                         @if ($event->tickets)

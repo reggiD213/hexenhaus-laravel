@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group{{ $errors->has('time') ? ' error' : ''}}">
-            <label for="event_time">Beginn:</label>
+            <label for="event_time">Einlass:</label>
             <input id="event_time" type="text" value="{{ old('time') ? old('time') : $event->time() }}" data-scroll-default="{{ old('time') ? old('time') : $event->time() }}" name="time">
             @if ($errors->has('time'))
                 <span>{{ $errors->first('time') }}</span>
