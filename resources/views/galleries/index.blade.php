@@ -38,7 +38,7 @@
         </div>
     @endforeach
 
-    {{-- $events->links('pagination.default') --}}
+    {{ $events->links('pagination.default') }}
     
 @endsection
 

@@ -27,8 +27,10 @@ class GalleriesController extends Controller
      */
     public function index()
     {
-        $events = Event::bygone()->where('hasPics','=','1')->orderBy('datetime', 'desc')->get();
-
+        $events = Event::bygone()->where('hasPics','=','1')->orderBy('datetime', 'desc')->with(array('pics'=>function($query){
+            $query->inRandomOrder()->limit(5);
+        }))->paginate(config('custom.galleries_per_page'));
+        //dd($events);
         return view('galleries.index', compact('events'));
     }
 
