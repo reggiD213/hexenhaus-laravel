@@ -83,6 +83,7 @@ class EventsController extends Controller
             'desc_long' => 'required',
             'date' => 'date',
             'time' => 'date_format:H:i',
+            'price' => 'required|min:1|max:66',
         ]);
 
         //create Model

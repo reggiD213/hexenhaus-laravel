@@ -24,7 +24,7 @@
             @endif
             <div class="clear"></div>
             <hr>
-            @foreach($event->pics as $pic)
+            @foreach($event->randomPics as $pic)
                 <div class="col-1">
                     <div class="square-1">
                         <div class="content">
@@ -35,10 +35,19 @@
                     </div>
                 </div>
             @endforeach
+            <div class="col-1">
+                <div class="square-1">
+                    <div class="content">
+                        <div class="table">
+                            <a class="table-cell dull" href="{{ route('galleries.show', $event) }}" title="gesamte Gallerie für {{ $event->printShortDate() }} anzeigen">mehr anzeigen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     @endforeach
 
-    {{-- $events->links('pagination.default') --}}
+    {{ $events->links('pagination.default') }}
     
 @endsection
 
