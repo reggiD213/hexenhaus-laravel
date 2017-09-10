@@ -29,7 +29,9 @@
                     <div class="square-1">
                         <div class="content">
                             <div class="table">
-                                <a class="table-cell swipe" href="/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->filename }}" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}" style="background-image: url('/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->thumbnail() }}')"></a>
+                                <a class="table-cell swipe" href="/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->filename }}"
+                                   title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}"
+                                   style="background-image: url('/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->thumbnail() }}')"></a>
                             </div>
                         </div>
                     </div>
@@ -39,7 +41,8 @@
                 <div class="square-1">
                     <div class="content">
                         <div class="table">
-                            <a class="table-cell dull" href="{{ route('galleries.show', $event) }}" title="gesamte Gallerie für {{ $event->printShortDate() }} anzeigen">mehr anzeigen</a>
+                            <a class="table-cell dull" href="{{ route('galleries.show', $event) }}"
+                               title="gesamte Gallerie für {{ $event->printShortDate() }} anzeigen">mehr anzeigen</a>
                         </div>
                     </div>
                 </div>
