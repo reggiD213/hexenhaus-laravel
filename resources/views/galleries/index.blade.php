@@ -24,7 +24,7 @@
             @endif
             <div class="clear"></div>
             <hr>
-            @foreach($event->pics as $pic)
+            @foreach($event->randomPics as $pic)
                 <div class="col-1">
                     <div class="square-1">
                         <div class="content">

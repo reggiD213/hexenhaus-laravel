@@ -30,9 +30,6 @@ class GalleriesController extends Controller
         $events = Event::bygone()
             ->where('hasPics','=','1')
             ->orderBy('datetime', 'desc')
-            ->with(array('pics'=>function($query){
-                $query->inRandomOrder()->limit(5);
-            }))
             ->paginate(config('custom.galleries_per_page'));
         
         return view('galleries.index', compact('events'));

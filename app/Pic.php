@@ -22,4 +22,5 @@ class Pic extends Model
         return $array[0] . '_thumb_' . $array[1];
 
     }
+    
 }
