@@ -39,7 +39,8 @@
                 <div class="square-1">
                     <div class="content">
                         <div class="table">
-                            <a class="table-cell swipe" href="/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->filename }}" title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}"
+                            <a class="table-cell swipe" href="/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->filename }}"
+                               title="{{ $pic->name }}" itemprop="contentUrl" data-size="{{ $pic->width }}x{{ $pic->height }}" data-index="{{ $loop->index }}"
                                style="background-image: url('/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->thumbnail() }}')"></a>
                         </div>
                     </div>
