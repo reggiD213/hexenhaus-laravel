@@ -26,7 +26,7 @@ class Event extends Model
     
     public function randomPics()
     {
-        return $this->hasMany('App\Pic')->inRandomOrder()->take(5);
+        return $this->pics()->inRandomOrder()->limit(5);
     }
 
     public function printPrice()
