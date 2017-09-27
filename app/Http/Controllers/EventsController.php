@@ -93,7 +93,6 @@ class EventsController extends Controller
         $event = new Event;
 
         $event->bands()->detach();
-        dd($request->bands);
         if ($request->bands) {
             foreach ($request->bands as $bandId) {
                 $event->bands()->attach($bandId);
