@@ -92,13 +92,6 @@ class EventsController extends Controller
         //create Model
         $event = new Event;
 
-        $event->bands()->detach();
-        if ($request->bands) {
-            foreach ($request->bands as $bandId) {
-                $event->bands()->attach($bandId);
-            }
-        }
-
         $event->name = $request->name;
         $event->desc_short = $request->desc_short;
         $event->desc_long = clean($request->desc_long);
@@ -131,9 +124,17 @@ class EventsController extends Controller
 
             $event->image_height = $intervention->height();
             $event->image_width = $intervention->width();
-            $event->save();
         }
 
+        $event->bands()->detach();
+        if ($request->bands) {
+            foreach ($request->bands as $bandId) {
+                $event->bands()->attach($bandId);
+            }
+        }
+
+        $event->save();
+        
         return redirect(route('events.index'))->withInfo('Veranstaltung erfolgreich erstellt!');
     }
 
