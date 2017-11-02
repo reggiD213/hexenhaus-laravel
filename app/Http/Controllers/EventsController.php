@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Band;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -55,6 +56,7 @@ class EventsController extends Controller
      */
     public function show(Event $event)
     {
+        $event->load('bands');
         return view('events.show', compact('event'));
     }
 
@@ -65,7 +67,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        $bands = Band::all();
+        return view('events.create', compact('bands'));
     }
 
     /**
@@ -83,7 +86,7 @@ class EventsController extends Controller
             'desc_long' => 'required',
             'date' => 'date',
             'time' => 'date_format:H:i',
-            'price' => 'required|min:1|max:66',
+            'price' => 'required|min:0|max:66',
         ]);
 
         //create Model
@@ -121,9 +124,17 @@ class EventsController extends Controller
 
             $event->image_height = $intervention->height();
             $event->image_width = $intervention->width();
-            $event->save();
         }
 
+        $event->bands()->detach();
+        if ($request->bands) {
+            foreach ($request->bands as $bandId) {
+                $event->bands()->attach($bandId);
+            }
+        }
+
+        $event->save();
+        
         return redirect(route('events.index'))->withInfo('Veranstaltung erfolgreich erstellt!');
     }
 
@@ -135,7 +146,8 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('events.edit', compact('event'));
+        $bands = Band::all();
+        return view('events.edit', compact('event', 'bands'));
     }
 
     /**
@@ -154,7 +166,17 @@ class EventsController extends Controller
             'desc_long' => 'required',
             'date' => 'date',
             'time' => 'date_format:H:i',
+            'price' => 'required|min:0|max:66',
         ]);
+
+        $event->bands()->detach();
+        //dd($request->bands);
+        if ($request->bands) {
+            foreach ($request->bands as $bandId) {
+                $event->bands()->attach($bandId);
+            }
+        }
+
         $event->name = $request->name;
         $event->desc_short = $request->desc_short;
         $event->desc_long = clean($request->desc_long);

@@ -34,15 +34,10 @@
                         <p>{{ $band->description }}</p>
                         <a class="button left" target="_blank" href="{{ $band->homepage }}"><i class="fa fa-info-circle"></i> Website</a>
                         @if ($band->events->count())
-                            <a class="button left" href="#"><i class="fa fa-calendar"></i> Events</a>
+                            {{-- <a class="button left" href="#"><i class="fa fa-calendar"></i> Events</a> --}}
                         @endif
                         @if (Auth::check() && Auth::user()->admin == 1)
                             <a class="button left" href="{{ route('bands.edit', $band) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
-                            <form method="post" action="{{ route('bands.destroy',[$band]) }}">
-                                {{ csrf_field() }}
-                                {{ method_field('delete') }}
-                                <button type="submit"><i class="fa fa-minus-circle"></i> Löschen</button>
-                            </form>
                         @endif
                         @if ($band->soundcloud)
                             <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/{{ $band->soundcloud }}"></iframe>

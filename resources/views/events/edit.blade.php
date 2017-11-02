@@ -9,9 +9,12 @@
     <hr>
     @if (count($errors))
         <div class="box">
+            Bitte Formular korrekt ausfüllen!
+            <ul>
             @foreach($errors->all() as $error)
-                Bitte Formular korrekt ausfüllen!
+            <li>{{ $error }}</li>
             @endforeach
+            </ul>
         </div>
     @endif
     <form enctype="multipart/form-data" class="box" method="post" action="{{ route('events.update', $event) }}">
@@ -68,6 +71,24 @@
             <input id="event_tickets" type="checkbox" value="1" name="tickets" autocomplete="off" {{ old('tickets') == 1 ? "checked" : $event->tickets == 1 ? "checked" : "" }}>
             @if ($errors->has('tickets'))
                 <span>{{ $errors->first('tickets') }}</span>
+            @endif
+        </div>
+        <div class="form-group{{ $errors->has('bands') ? ' error' : ''}}">
+            <label for="event_bands">Bands (optional):</label><br>
+            <select name="bands[]" size="5" multiple>
+                @foreach ($bands as $band)
+                    <option value="{{ $band->id }}"
+                    @if (old('bands') != [])
+                        {{ (collect(old('bands'))->contains($band->id)) ? 'selected':'' }}
+                    @else
+                        {{ ($event->bands->contains($band->id)) ? 'selected':'' }}
+                    @endif
+                    >{{ $band->name }}
+                    </option>
+                @endforeach
+            </select>
+            @if ($errors->has('bands'))
+                <span>{{ $errors->first('bands') }}</span>
             @endif
         </div>
         <div class="form-group{{ $errors->has('image') ? ' error' : ''}}">

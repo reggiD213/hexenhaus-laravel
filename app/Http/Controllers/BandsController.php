@@ -75,7 +75,7 @@ class BandsController extends Controller
             $filename = time() . '_' . $image->getClientOriginalName();
             $band->image = $filename;
             $path = public_path('images/uploads/bands/' . $band->id . '/' . $filename);
-            Image::make($image->getRealPath())->widen(223)->save($path);
+            Image::make($image->getRealPath())->widen(350)->save($path);
 
             $band->save();
         }
@@ -126,7 +126,7 @@ class BandsController extends Controller
             $filename = time() . '_' . $image->getClientOriginalName();
             $band->image = $filename;
             $path = public_path('images/uploads/bands/' . $band->id . '/' . $filename);
-            Image::make($image->getRealPath())->widen(223)->save($path);
+            Image::make($image->getRealPath())->widen(350)->save($path);
         }
 
         $band->save();

@@ -317,7 +317,7 @@ footer {
   }
 }
 
-.events, .bands, .event, .gallery {
+.events, .bands, .event, .gallery, .event_band {
 
   a.thumb {
     width: calc(100% - 21px);
@@ -357,6 +357,22 @@ footer {
   .dull {
     padding-right: 45px;
   }
+}
+//TODO: move somewhere better
+.flexbox {
+  margin: -7.5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.event_band {
+  margin: 7.5px;
+  
+  min-width: 375px;
+  width: 50%;
+  flex: 1 1 calc(50% - 15px);
+
 }
 
 .gallery {

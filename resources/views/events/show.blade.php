@@ -14,13 +14,6 @@
             <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Galerie</a>
         @endif
         <h3 class="glow left">{{ $event->printDate() }}</h3>
-        @if (Auth::check() && Auth::user()->admin == 1)
-            <form method="post" action="{{ route('events.destroy',$event) }}">
-                {{ csrf_field() }}
-                {{ method_field('delete') }}
-                <button type="submit" class="right"><i class="fa fa-minus-circle"></i> Löschen</button>
-            </form>
-        @endif
         @if ($event->tickets)
             {{--<a class="button right" target="_blank" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-shopping-cart"></i> Tickets</a>--}}
             <a class="button right" target="_blank" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-ulm-tickets"></i> Tickets</a>
@@ -33,6 +26,36 @@
         </a>
         <p>{!! $event->desc_long !!}</p>
     </div>
+    @if (count($event->bands))
+        <h2>Bands an diesem Event</h2>
+        <hr>
+        <div class="flexbox">
+            @foreach ($event->bands as $i => $band)
+                <div class="box event_band">
+                    <div class="col-static-2">
+                        <a class="left thumb" target="_blank" href="{{ $band->homepage }}">
+                            <img src="/images/uploads/bands/{{ $band->id . '/' . $band->image }}" alt="{{ $band->name }}">
+                        </a>
+                        <div class="vr"></div>
+                    </div>
+                    <div class="col-static-4">
+                        <a target="_blank" href="{{ $band->homepage }}">
+                            <h3 class="glow">{{ $band->name }}</h3>
+                        </a>
+                        <hr>
+                        <p>{{ $band->description }}</p>
+                        <a class="button left" target="_blank" href="{{ $band->homepage }}"><i class="fa fa-info-circle"></i> Website</a>
+                        @if ($band->events->count())
+                            {{-- <a class="button left" href="#"><i class="fa fa-calendar"></i> Events</a> --}}
+                        @endif
+                        @if ($band->soundcloud)
+                            <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/{{ $band->soundcloud }}"></iframe>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
     
 @endsection
 
