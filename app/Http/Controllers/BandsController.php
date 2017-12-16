@@ -55,7 +55,7 @@ class BandsController extends Controller
             'name' => 'required|max:40',
             'description' => 'required|max:500',
             'homepage' => 'required',
-            'image' => 'required'
+            'image' => 'required|max:40000', //~40MB
         ]);
 
         //create Model
@@ -110,7 +110,8 @@ class BandsController extends Controller
         $this->validate($request, [
             'name' => 'required|max:40',
             'description' => 'required|max:500',
-            'homepage' => 'required'
+            'homepage' => 'required',
+            'image' => 'max:40000', //~40MB
         ]);
 
         $band->name = $request->name;

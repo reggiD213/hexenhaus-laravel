@@ -87,6 +87,7 @@ class EventsController extends Controller
             'date' => 'date',
             'time' => 'date_format:H:i',
             'price' => 'required|min:0|max:66',
+            'image' => 'required|max:40000', //~40MB
         ]);
 
         //create Model
@@ -167,6 +168,7 @@ class EventsController extends Controller
             'date' => 'date',
             'time' => 'date_format:H:i',
             'price' => 'required|min:0|max:66',
+            'image' => 'required|max:40000', //~40MB
         ]);
 
         $event->bands()->detach();
