@@ -41,6 +41,10 @@
                         @endif
                         @if ($band->soundcloud)
                             <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/{{ $band->soundcloud }}"></iframe>
+                        @else
+                            @if ($band->bandcamp)
+                                <iframe style="height: 120px" src="https://bandcamp.com/EmbeddedPlayer/album={{ $band->bandcamp }}/size=large/bgcol=f5f5f5/linkcol=e32c14/tracklist=false/artwork=small/transparent=true/" seamless>{{--<a href="http://mrbison.bandcamp.com/album/asteroid">Asteroid by Mr Bison</a>--}}</iframe>
+                            @endif
                         @endif
                     </div>
                 </div>

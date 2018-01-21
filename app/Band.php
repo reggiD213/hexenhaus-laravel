@@ -27,7 +27,7 @@ class Band extends Model
             return;
         }
 
-        //removes everything behind "/users/"
+        //removes everything before, including "/users/"
         $firstCut = strstr($value, '/users/');
         $newstring = substr($firstCut, 7);
 
@@ -42,6 +42,27 @@ class Band extends Model
         $this->attributes['soundcloud'] = '';
     }
 
+    public function setBandcampAttribute($value)
+    {
+        if (is_numeric($value)) {
+            $this->attributes['bandcamp'] = $value;
+            return;
+        }
+
+        //removes everything before, including "album="
+        $firstCut = strstr($value, 'album=');
+        $newstring = substr($firstCut, 6);
+
+        //remove everything from '/' leaving only the number behind
+        $newstring = strstr($newstring, '/', true);
+
+        if ($newstring != 0) {
+            $this->attributes['bandcamp'] = $newstring;
+            return;
+        }
+
+        $this->attributes['bandcamp'] = '';
+    }
     /**
      * Generate slug correctly
      *
