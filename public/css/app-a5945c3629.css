@@ -11,20 +11,17 @@
 /* Document
        ========================================================================== */
 /**
-     * 1. Change the default font family in all browsers (opinionated).
-     * 2. Correct the line height in all browsers.
-     * 3. Prevent adjustments of font size after orientation changes in
+     * 1. Correct the line height in all browsers.
+     * 2. Prevent adjustments of font size after orientation changes in
      *    IE on Windows Phone and in iOS.
      */
 html {
-  font-family: sans-serif;
-  /* 1 */
   line-height: 1.15;
-  /* 2 */
+  /* 1 */
   -ms-text-size-adjust: 100%;
-  /* 3 */
+  /* 2 */
   -webkit-text-size-adjust: 100%;
-  /* 3 */
+  /* 2 */
 }
 
 /* Sections
@@ -118,19 +115,10 @@ a {
   /* 2 */
 }
 
-/**
-     * Remove the outline on focused links when they are also active or hovered
-     * in all browsers (opinionated).
-     */
-a:active,
-a:hover {
-  outline-width: 0;
-}
-
 /* Text-level semantics
        ========================================================================== */
 /**
-     * 1. Remove the bottom border in Firefox 39-.
+     * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
      * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
      */
 abbr[title] {
@@ -380,12 +368,10 @@ input {
 }
 
 /**
-     * Change the border, margin, and padding in all browsers (opinionated).
+     * Correct the padding in Firefox.
      */
 fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
+  padding: 0.35em 0.75em 0.625em;
 }
 
 /**
@@ -722,8 +708,6 @@ body {
 hr {
   border: 0;
   height: 1px;
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(51, 51, 51, 0)), color-stop(15%, #333333), color-stop(85%, #333333), color-stop(100%, rgba(51, 51, 51, 0)));
-  background: -webkit-linear-gradient(left, rgba(51, 51, 51, 0) 0%, #333333 15%, #333333 85%, rgba(51, 51, 51, 0) 100%);
   background: linear-gradient(to right, rgba(51, 51, 51, 0) 0%, #333333 15%, #333333 85%, rgba(51, 51, 51, 0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00333333', endColorstr='#00333333', GradientType=1);
 }
@@ -733,8 +717,6 @@ hr {
   height: 250px;
   float: left;
   margin: 0 10px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(51, 51, 51, 0)), color-stop(35%, rgba(51, 51, 51, 0.6)), color-stop(65%, rgba(51, 51, 51, 0.6)), color-stop(100%, rgba(51, 51, 51, 0)));
-  background: -webkit-linear-gradient(top, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 0.6) 35%, rgba(51, 51, 51, 0.6) 65%, rgba(51, 51, 51, 0) 100%);
   background: linear-gradient(to bottom, rgba(51, 51, 51, 0) 0%, rgba(51, 51, 51, 0.6) 35%, rgba(51, 51, 51, 0.6) 65%, rgba(51, 51, 51, 0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00333333', endColorstr='#00333333', GradientType=0);
 }

@@ -16,6 +16,8 @@
     "vue-resource": "^1.0.3"
   },
   "dependencies": {
-    "normalize-scss": "^6.0.0"
+    "node-sass": "^4.0.0",
+    "normalize-scss": "^7.0.1",
+    "webpack": "^2.7.0"
   }
 }
