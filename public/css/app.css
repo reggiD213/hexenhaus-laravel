@@ -955,19 +955,19 @@ footer a.freefm:hover {
   color: #f60;
 }
 
-.events a.thumb, .bands a.thumb, .event a.thumb, .gallery a.thumb, .event_band a.thumb {
+.events a.thumb, .bands a.thumb, .event a.thumb, .gallery a.thumb, .event_band a.thumb, .members a.thumb {
   width: calc(100% - 21px);
 }
 
-.events a.thumb img, .bands a.thumb img, .event a.thumb img, .gallery a.thumb img, .event_band a.thumb img {
+.events a.thumb img, .bands a.thumb img, .event a.thumb img, .gallery a.thumb img, .event_band a.thumb img, .members a.thumb img {
   max-width: 100%;
 }
 
-.events .button, .bands .button, .event .button, .gallery .button, .event_band .button {
+.events .button, .bands .button, .event .button, .gallery .button, .event_band .button, .members .button {
   margin-right: 10px;
 }
 
-.events iframe, .bands iframe, .event iframe, .gallery iframe, .event_band iframe {
+.events iframe, .bands iframe, .event iframe, .gallery iframe, .event_band iframe, .members iframe {
   margin-top: 10px;
   height: 100px;
   overflow: hidden;
@@ -1100,6 +1100,28 @@ footer a.freefm:hover {
   width: auto;
   height: auto;
   max-width: 100%;
+}
+
+.members .box {
+  overflow-x: auto;
+}
+
+.members table, .members td, .members tr, .members th {
+  border: 1px solid #333333;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.members tr:nth-child(odd) {
+  background-color: rgba(51, 51, 51, 0.6);
+}
+
+.members tr:hover {
+  background-color: rgba(51, 51, 51, 0.8);
+}
+
+.members table {
+  width: 100%;
 }
 
 .about .videoWrapper {

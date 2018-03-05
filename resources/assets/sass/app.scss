@@ -317,7 +317,7 @@ footer {
   }
 }
 
-.events, .bands, .event, .gallery, .event_band {
+.events, .bands, .event, .gallery, .event_band, .members {
 
   a.thumb {
     width: calc(100% - 21px);
@@ -472,6 +472,29 @@ footer {
 
       }
     }
+  }
+}
+
+.members {
+  .box {
+    overflow-x: auto;
+  }
+  table, td, tr, th {
+    border: $border;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: rgba(51, 51, 51, 0.6);
+  }
+
+  tr:hover {
+    background-color: rgba(51, 51, 51, 0.8);
+  }
+
+  table {
+    width: 100%;
   }
 }
 

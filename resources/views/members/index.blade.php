@@ -9,7 +9,7 @@
     <hr>
     @include('includes.infobox')
     <ul class="members layout">
-        @if (Auth::check())
+        @if (Auth::check() && Auth::user()->privileges >= 1)
             @if (Auth::user()->admin())
             <li class="box">
                 <a href="{{ route('members.create') }}">
@@ -28,7 +28,7 @@
                     @foreach ($members as $member)
                         <tr>
                             <td>{{ $member->name ? $member->name : $member->firstname + " " + $member->lastname }}</td>
-                            <td>{{ $member->email }}</td>
+                            <td> <a href="mailto:{{ $member->email }}">{{ $member->email }}</a></td>
                             <td>{{ $member->phone }}</td>
                             @if (Auth::user()->admin()) <th><a class="admin" href="{{ route('members.edit', $member) }}"><i class="fa fa-cog"></i></a></th> @endif
                         </tr>
