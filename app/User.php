@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Checks if an user has admin privileges.
+     *
+     * @return bool
+     */
+    public function admin () {
+        return $this->privileges >= 3;
+    }
 }

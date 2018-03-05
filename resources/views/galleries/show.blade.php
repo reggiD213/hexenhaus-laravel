@@ -14,7 +14,7 @@
         <a class="left button" href="{{ route('events.show', $event) }}">Zum Event</a>
         <h3 class=" left glow">{{ $event->name }}</h3>
 
-        @if (Auth::check() && Auth::user()->privileges >= 3)
+        @if (Auth::check() && Auth::user()->admin())
             <form method="post" action="{{ route('galleries.destroy', $event) }}">
                 {{ csrf_field() }}
                 {{ method_field('delete') }}
@@ -23,7 +23,7 @@
         @endif
         <div class="clear"></div>
         <hr>
-        @if (Auth::check() && Auth::user()->privileges >= 3)
+        @if (Auth::check() && Auth::user()->admin())
             <div class="col-2">
                 <div class="square-1">
                     <div class="content">
@@ -43,7 +43,7 @@
                                style="background-image: url('/images/uploads/events/{{ $event->date() }}/gallery/{{ $pic->thumbnail() }}')"></a>
                         </div>
                     </div>
-                    @if (Auth::check() && Auth::user()->privileges >= 3)
+                    @if (Auth::check() && Auth::user()->admin())
                         <form method="post" action="{{ route('pics.destroy', $pic) }}">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
