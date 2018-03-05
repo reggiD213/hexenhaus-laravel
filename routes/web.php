@@ -42,9 +42,10 @@ Route::delete('galleries/{event}', ['uses' => 'GalleriesController@destroy', 'as
 
 Route::resource('newsfeeds', 'NewsfeedsController');
 
+Route::resource('members', 'MembersController');
 
 //auth pages
-Route::get('members', ['uses' => 'MembersController@index', 'as' => 'members']);
+//Route::get('members', ['uses' => 'MembersController@index', 'as' => 'members']);
 Auth::routes();
 /*
 +--------+-----------+---------------------------+----------------------+------------------------------------------------------------------------+--------------+

@@ -19,7 +19,7 @@ class AdminMiddleware
     public function handle($request, Closure $next, $guard = null)
     {
         Log::info("Authenticating Users...");
-        if (Auth::guard($guard)->guest() || Auth::user()->admin == 0) {
+        if (Auth::guard($guard)->guest() || !Auth::user()->admin()) {
             if ($request->ajax() || $request->wantsJson()) {
                 Log::info("Unauthorized ajax request.");
                 return response('Unauthorized.', 401);

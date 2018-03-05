@@ -32,7 +32,7 @@ class User extends Authenticatable
      *
      * @return bool
      */
-    public function admin () {
+    public function admin() {
         return $this->privileges >= 3;
     }
 }
