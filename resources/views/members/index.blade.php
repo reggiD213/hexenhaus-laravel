@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-    
+    <h2>Willkommen {{ Auth::user()->name }}!</h2>
+    <hr> 
 @endsection
 
 @section('sidebar')

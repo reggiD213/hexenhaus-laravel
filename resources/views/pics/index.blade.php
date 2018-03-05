@@ -9,7 +9,7 @@
     @include('includes.infobox')
     <div class="pics box">
         <div class="row">
-            @if (Auth::check() && Auth::user()->admin == 1)
+            @if (Auth::check() && Auth::user()->privileges >= 3)
                 <div class="col-2">
                     <a href="{{ route('pics.create') }}" class="table">
                         <div class="cell">
@@ -25,7 +25,7 @@
                             <img src="/images/uploads/gallery/{{ $pic->thumbnail() }}" alt="{{ $pic->name }}" itemprop="thumbnail">
                         </div>
                     </a>
-                    @if (Auth::check() && Auth::user()->admin == 1)
+                    @if (Auth::check() && Auth::user()->privileges >= 3)
                         <a class="admin" href="{{ route('pics.edit', $pic) }}"><i class="fa fa-cog"></i></a>
                     @endif
                 </div>

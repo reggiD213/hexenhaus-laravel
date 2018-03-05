@@ -7,7 +7,7 @@
     <h2>Bildergalerie</h2>
     <hr>
     @include('includes.infobox')
-    @if (Auth::check() && Auth::user()->admin == 1)
+    @if (Auth::check() && Auth::user()->privileges >= 3)
         <div class="box">
             <a href="{{ route('galleries.create') }}">
                 <h3 class="glow"><i class="fa fa-plus-circle"></i> Neue Gallerie hinzufügen</h3>
@@ -19,7 +19,7 @@
             <a class="left" href="{{ route('galleries.show', $event) }}">
                 <h3 class="glow">{{ $event->printShortDate() . ' | ' . $event->name }}</h3>
             </a>
-            @if (Auth::check() && Auth::user()->admin == 1)
+            @if (Auth::check() && Auth::user()->privileges >= 3)
                 <a class="button right" href="{{ route('galleries.show', $event) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
             @endif
             <div class="clear"></div>

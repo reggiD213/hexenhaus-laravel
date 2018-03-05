@@ -18,7 +18,7 @@
                         @endforeach
                     </ul>
                 </div>
-                @if (Auth::check() && Auth::user()->admin == 1)
+                @if (Auth::check() && Auth::user()->privileges >= 3)
                     <a class="admin" href="{{ route('newsfeeds.index') }}"><i class="fa fa-cog"></i></a>
                 @endif
             </div>

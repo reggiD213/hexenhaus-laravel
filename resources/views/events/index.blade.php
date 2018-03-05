@@ -13,7 +13,7 @@
     <hr>
     @include('includes.infobox')
     <ul class="events layout">
-        @if (Auth::check() && Auth::user()->admin == 1)
+        @if (Auth::check() && Auth::user()->privileges >= 3)
             <li class="box">
                 <a href="{{ route('events.create') }}">
                     <h3 class="glow"><i class="fa fa-plus-circle"></i> Neuen Event erstellen</h3>
@@ -44,7 +44,7 @@
                         @if ($event->tickets)
                             <a class="button left" target="_blank" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-ulm-tickets"></i> Tickets</a>
                         @endif
-                        @if (Auth::check() && Auth::user()->admin == 1)
+                        @if (Auth::check() && Auth::user()->privileges >= 3)
                             <a class="button left" href="{{ route('events.edit', $event) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
                         @endif
                     </div>
