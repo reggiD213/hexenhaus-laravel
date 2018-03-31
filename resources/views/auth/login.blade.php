@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-    TODO: Profile Page
+    <h2>Bitte einloggen oder registrieren!</h2>
+    <hr> 
 @endsection
 
 @section('sidebar')

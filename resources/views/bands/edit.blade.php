@@ -40,11 +40,28 @@
                 <span>{{ $errors->first('homepage') }}</span>
             @endif
         </div>
+        {{--<div class="form-group{{ $errors->has('embeddedplayer') ? ' error' : ''}}">
+            <label for="band_embeddedplayer">Embedded player anzeigen:</label><br>
+            <input type="radio" id="band_embeddedplayer_soundcloud" name="embeddedplayer" value="soundcloud" {{ $band->embeddedplayer == "soundcloud" ? "checked" : "" }}>
+            <label class="radio" for="band_embeddedplayer_soundcloud">Soundcloud anzeigen</label>
+            <input type="radio" id="band_embeddedplayer_bandcamp" name="embeddedplayer" value="bandcamp" {{ $band->embeddedplayer == "bandcamp" ? "checked" : "" }}>
+            <label class="radio" for="band_embeddedplayer_bandcamp">Bandcamp anzeigen</label> 
+            @if ($errors->has('embeddedplayer'))
+                <span>{{ $errors->first('embeddedplayer') }}</span>
+            @endif
+        </div>--}}
         <div class="form-group{{ $errors->has('soundcloud') ? ' error' : ''}}">
             <label for="band_soundcloud">Soundcloud:</label>
             <input id="band_soundcloud" type="text" value="{{ old('soundcloud') ? old('soundcloud') : $band->soundcloud }}" name="soundcloud" autocomplete="off" placeholder="Soundcloud-Embed-Link oder User ID eingeben">
             @if ($errors->has('soundcloud'))
                 <span>{{ $errors->first('soundcloud') }}</span>
+            @endif
+        </div>
+        <div class="form-group{{ $errors->has('bandcamp') ? ' error' : ''}}">
+            <label for="band_bandcamp">Bandcamp:</label>
+            <input id="band_bandcamp" type="text" value="{{ old('bandcamp') ? old('bandcamp') : $band->bandcamp }}" name="bandcamp" autocomplete="off" placeholder="Bandcamp-Embed-Link oder Album ID eingeben">
+            @if ($errors->has('bandcamp'))
+                <span>{{ $errors->first('bandcamp') }}</span>
             @endif
         </div>
         <div class="form-group{{ $errors->has('image') ? ' error' : ''}}">

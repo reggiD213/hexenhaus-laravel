@@ -9,7 +9,7 @@
     <hr>
     @include('includes.infobox')
     <ul class="bands layout">
-        @if (Auth::check() && Auth::user()->admin == 1)
+        @if (Auth::check() && Auth::user()->admin())
             <li class="box">
                 <a href="{{ route('bands.create') }}">
                     <h3 class="glow"><i class="fa fa-plus-circle"></i> Neue Band erstellen</h3>
@@ -36,11 +36,15 @@
                         @if ($band->events->count())
                             {{-- <a class="button left" href="#"><i class="fa fa-calendar"></i> Events</a> --}}
                         @endif
-                        @if (Auth::check() && Auth::user()->admin == 1)
+                        @if (Auth::check() && Auth::user()->admin())
                             <a class="button left" href="{{ route('bands.edit', $band) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
                         @endif
                         @if ($band->soundcloud)
                             <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/{{ $band->soundcloud }}"></iframe>
+                        @else
+                            @if ($band->bandcamp)
+                                <iframe style="height: 120px" src="https://bandcamp.com/EmbeddedPlayer/album={{ $band->bandcamp }}/size=large/bgcol=f5f5f5/linkcol=e32c14/tracklist=false/artwork=small/transparent=true/" seamless>{{--<a href="http://mrbison.bandcamp.com/album/asteroid">Asteroid by Mr Bison</a>--}}</iframe>
+                            @endif
                         @endif
                     </div>
                 </div>
