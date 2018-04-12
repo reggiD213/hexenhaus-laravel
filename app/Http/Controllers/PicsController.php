@@ -77,7 +77,7 @@ class PicsController extends Controller
 
 
 
-        return redirect(route('galleries.show', $pic->gallery))->withInfo('Bild erfolgreich gelöscht!');
+        return redirect(route('galleries.show', $pic->event))->withInfo('Bild erfolgreich gelöscht!');
     }
 
 }

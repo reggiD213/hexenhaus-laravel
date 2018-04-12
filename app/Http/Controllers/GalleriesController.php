@@ -93,6 +93,7 @@ class GalleriesController extends Controller
         rmdir(public_path('images/uploads/events/' . $event->date() . '/gallery'));
 
         $event->hasPics = 0;
+        $event->pics()->delete();
         $event->save();
 
         return redirect(route('galleries.index'))->withInfo('Galerie erfolgreich gelöscht!');
