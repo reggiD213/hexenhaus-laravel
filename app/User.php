@@ -33,6 +33,25 @@ class User extends Authenticatable
      * @return bool
      */
     public function admin() {
-        return $this->privileges >= 3;
+        return $this->privileges & 4;
     }
+
+    /**
+     * Checks if an user has uploader privileges.
+     *
+     * @return bool
+     */
+    public function uploader() {
+        return $this->privileges & 2;
+    }
+
+    /**
+     * Checks if an user has member privileges.
+     *
+     * @return bool
+     */
+    public function member() {
+        return $this->privileges & 1;
+    }
+
 }

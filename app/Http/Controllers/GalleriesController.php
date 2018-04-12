@@ -17,7 +17,7 @@ class GalleriesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin')->only(['store', 'create', 'destroy']);
+        $this->middleware('uploader')->only(['store', 'create', 'destroy']);
     }
 
     /**

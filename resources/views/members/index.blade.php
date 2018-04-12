@@ -9,15 +9,17 @@
     <hr>
     @include('includes.infobox')
     <ul class="members layout">
-        @if (Auth::check() && Auth::user()->privileges >= 1)
-            @if (Auth::user()->admin())
+        @if (Auth::user()->admin())
             <li class="box">
                 <a href="{{ route('members.create') }}">
                     <h3 class="glow"><i class="fa fa-plus-circle"></i> Neues Mitglied hinzufügen</h3>
                 </a>
             </li>
-            @endif
+        @endif
+        @if (Auth::user()->member())
             <li class="box">
+                <h3>Mitgliederliste</h3>
+                <hr>
                 <table>
                     <tr>
                         <th>Name</th>
