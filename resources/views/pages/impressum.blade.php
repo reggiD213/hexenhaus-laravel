@@ -42,7 +42,7 @@
                 Adresse s.o.
             </li>
             <li>
-                Henning Bock, Vorstand, Schatzmeister<br>
+                Henning Bock, Vorstand<br>
                 Adresse s.o.
             </li>
             <li>

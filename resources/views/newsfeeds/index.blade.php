@@ -23,7 +23,7 @@
                         <div class="vr right"></div>
                     </div>
                     <div class="col-static-2">
-                        <button class="big" href="{{ route('newsfeeds.edit', $newsfeed) }}"><i class="fa fa-cog"></i> Bearbeiten</button>
+                        <button class="big"><a href="{{ route('newsfeeds.edit', $newsfeed) }}"><i class="fa fa-cog"></i> Bearbeiten</a></button>
                         <form method="post" action="{{ route('newsfeeds.destroy', $newsfeed) }}">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
