@@ -7,5 +7,5 @@
         <li><h3 class="glow">Jeden 3. Samstag im Monat</h3><img src="/images/full-metal-night.jpg" alt="Full Metal Night"></li>
         <li><h3 class="glow">Jeden Donnerstag</h3><img src="/images/tabletop.jpg" alt="Tabletop"></li>
 
-        {{-- <img class="summerbreak" src="/images/summerbreak.png"> --}}
+        <img class="summerbreak" src="/images/summerbreak.png">
 </ul>
