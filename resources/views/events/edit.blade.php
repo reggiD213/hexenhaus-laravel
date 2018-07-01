@@ -45,6 +45,7 @@
                 <span>{{ $errors->first('name') }}</span>
             @endif
         </div>
+        {{--
         <div class="form-group{{ $errors->has('desc_short') ? ' error' : ''}}">
             <label for="event_desc_short">Kurzbeschreibung: </label>
             <textarea id="event_desc_short" rows="5" name="desc_short" placeholder="kurze Eventbeschreibung eintippen">{{ old('desc_short') ? old('desc_short') : $event->desc_short }}</textarea>
@@ -52,6 +53,7 @@
                 <span>{{ $errors->first('desc_short') }}</span>
             @endif
         </div>
+        --}}
         <div class="form-group{{ $errors->has('desc_long') ? ' error' : ''}}">
             <label for="event_desc_long">Beschreibung:</label>
             <textarea id="event_desc_long" rows="5" name="desc_long" placeholder="ausführliche Eventbeschreibung eintippen">{{ old('desc_long') ? old('desc_long') : $event->desc_long }}</textarea>

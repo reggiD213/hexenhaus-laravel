@@ -82,7 +82,6 @@ class EventsController extends Controller
         //validation
         $this->validate($request, [
             'name' => 'required|max:255',
-            'desc_short' => 'required|max:500',
             'desc_long' => 'required',
             'date' => 'date',
             'time' => 'date_format:H:i',
@@ -94,8 +93,8 @@ class EventsController extends Controller
         $event = new Event;
 
         $event->name = $request->name;
-        $event->desc_short = $request->desc_short;
         $event->desc_long = clean($request->desc_long);
+        $event->desc_short = "";
         $event->price = $request->price;
         $event->datetime = $request->date . ' ' . $request->time . ':00';
         $event->tickets = $request->tickets == 1 ? 1 : 0;
@@ -163,7 +162,6 @@ class EventsController extends Controller
         //validation
         $this->validate($request, [
             'name' => 'required|max:255',
-            'desc_short' => 'required|max:500',
             'desc_long' => 'required',
             'date' => 'date',
             'time' => 'date_format:H:i',
@@ -180,8 +178,8 @@ class EventsController extends Controller
         }
 
         $event->name = $request->name;
-        $event->desc_short = $request->desc_short;
         $event->desc_long = clean($request->desc_long);
+        $event->desc_short = "";
         $event->price = $request->price;
         $event->guests = $request->guests;
         $event->datetime = $request->date . ' ' . $request->time . ':00';
