@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApplicationMail;
 use App\Application;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 class ApplicationsController extends Controller
 {
     /**
@@ -84,29 +85,6 @@ class ApplicationsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Application $application
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Application $application)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Application $application
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Application $application)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  Application $application
@@ -114,6 +92,20 @@ class ApplicationsController extends Controller
      */
     public function destroy(Application $application)
     {
-        //
+        $application->delete();
+
+        return redirect(route('applications.index'))->withInfo('Bewerbung erfolgreich gelöscht!');
+    }
+
+    /**
+     * Sends an automated E-Mail of this resource.
+     *
+     * @param  Application $application
+     * @return \Illuminate\Http\Response
+     */
+    public function send(Application $application) {
+        Mail::to('reggid213@gmail.com')->send(new ApplicationMail($application));
+
+        return redirect(route('applications.show', $application))->withInfo('Bewerbung wurde zugestellt.');
     }
 }
