@@ -33,7 +33,7 @@ class ApplicationMail extends Mailable
     public function build()
     {
         return $this->from('applications@hexenhaus-metal.de')
-                    ->subject('Bewerbung:' + $application->name)
+                    ->subject('Bewerbung:' . $this->application->name)
                     ->view('mails.application');
     }
 }
