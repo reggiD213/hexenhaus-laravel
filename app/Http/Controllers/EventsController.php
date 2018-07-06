@@ -31,8 +31,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::upcomming()->orderBy('datetime')->paginate(config('custom.events_per_page'));
-
+        $events = Event::upcomming()->orderBy('datetime')->paginate(config('settings.events_per_page'));
         return view('events.index', compact('events'));
     }
 
@@ -43,7 +42,7 @@ class EventsController extends Controller
      */
     public function indexBygone()
     {
-        $events = Event::bygone()->orderBy('datetime', 'desc')->paginate(config('custom.events_per_page'));
+        $events = Event::bygone()->orderBy('datetime', 'desc')->paginate(config('settings.events_per_page'));
 
         return view('events.index', compact('events'));
     }

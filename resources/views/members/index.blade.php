@@ -38,6 +38,30 @@
                 </table>
             </li>
         @endif
+        @if (Auth::user()->admin())
+            <li class="box">
+                <h3>Seiteneinstellungen</h3>
+                <hr>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Wert</th>
+                        <th>Ändern</th>
+                    </tr>
+                    @foreach ($settings as $setting)
+                        <tr>    
+                            <form method="post" action="{{ route('settings.update', $setting) }}">
+                            {{ csrf_field() }}
+                            {{ method_field('patch') }}
+                                <td>{{ $setting->name }}</td>
+                                <td><input type="text" value="{{ old('value') ? old('value') : $setting->value }}" name="value" autocomplete="off" placeholder=" "></td>
+                                <td><button type="submit"><i class="fa fa-check-circle"></i> Ändern</button></td>
+                            </form>
+                        </tr>
+                    @endforeach
+                </table>
+            </li>
+        @endif
     </ul>
 @endsection
 

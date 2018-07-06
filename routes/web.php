@@ -47,6 +47,8 @@ Route::resource('members', 'MembersController');
 Route::resource('applications', 'ApplicationsController', ['except' => ['edit', 'update']]);
 Route::get('applications/{application}/send', ['uses' => 'ApplicationsController@send', 'as' => 'applications.send']);
 
+Route::resource('settings', 'SettingsController', ['only' => ['index', 'update']]);
+
 //auth pages
 //Route::get('members', ['uses' => 'MembersController@index', 'as' => 'members']);
 Auth::routes();

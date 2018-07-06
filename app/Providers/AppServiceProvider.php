@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Newsfeed;
+use App\Setting;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
         {
             $newsfeeds = Newsfeed::all();
             view()->share('newsfeeds', $newsfeeds);
+        }
+        if (Schema::hasTable('settings')) {
+            foreach (Setting::all() as $setting) {
+                Config::set('settings.'.$setting->name, $setting->value);
+            }
         }
     }
 

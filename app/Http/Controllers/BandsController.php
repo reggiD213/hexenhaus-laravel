@@ -27,7 +27,7 @@ class BandsController extends Controller
      */
     public function index()
     {
-        $bands = Band::orderBy('name')->paginate(config('custom.bands_per_page'));
+        $bands = Band::orderBy('name')->paginate(config('settings.bands_per_page'));
 
         return view('bands.index', compact('bands'));
     }

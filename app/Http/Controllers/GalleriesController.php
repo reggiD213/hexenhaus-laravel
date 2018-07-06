@@ -30,7 +30,7 @@ class GalleriesController extends Controller
         $events = Event::bygone()
             ->where('hasPics','=','1')
             ->orderBy('datetime', 'desc')
-            ->paginate(config('custom.galleries_per_page'));
+            ->paginate(config('settings.galleries_per_page'));
         
         return view('galleries.index', compact('events'));
     }
