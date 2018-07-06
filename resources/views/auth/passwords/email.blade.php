@@ -21,15 +21,15 @@
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' error' : '' }}">
+                <input class="effect" id="email" type="email" name="email" value="{{ old('email') }}" autofocus placeholder=" " required>
                 <label for="email">E-Mail-Adresse:</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-                    @if ($errors->has('email'))
-                        <span>{{ $errors->first('email') }}</span>
-                    @endif
+                @if ($errors->has('email'))
+                    <span>{{ $errors->first('email') }}</span>
+                @endif
             </div>
 
             <div class="form-group">
-                <button type="submit"><i class="fa fa-envelope"></i> Passwort Reset Link schicken</button>
+                <button class="big" type="submit"><i class="fa fa-envelope"></i> Passwort Reset Link schicken</button>
             </div>
         </form>
 

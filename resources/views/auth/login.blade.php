@@ -17,28 +17,28 @@
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' error' : '' }}">
+                <input class="effect" id="email" type="email" name="email" value="{{ old('email') }}" autofocus placeholder=" " required>
                 <label for="email">E-Mail Adresse:</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus>
                 @if ($errors->has('email'))
                     <span>{{ $errors->first('email') }}</span>
                 @endif
             </div>
 
             <div class="form-group{{ $errors->has('password') ? ' error' : '' }}">
+                <input class="effect" id="password" type="password" name="password" placeholder=" " required>
                 <label for="password">Passwort:</label>
-                <input id="password" type="password" name="password">
                 @if ($errors->has('password'))
                     <span>{{ $errors->first('password') }}</span>
                 @endif
             </div>
 
             <div class="form-group">
+                <label for="remember">Eingeloggt bleiben?</label><br>
                 <input id="remember" type="checkbox" name="remember">
-                <label for="remember">Eingeloggt bleiben?</label>
             </div>
 
             <div class="form-group">
-                <button type="submit"><i class="fa fa-check-circle"></i> Einloggen</button>
+                <button class="big" type="submit"><i class="fa fa-check-circle"></i> Einloggen</button>
             </div>
 
         </form>
