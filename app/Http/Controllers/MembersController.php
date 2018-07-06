@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Member;
 use App\Setting;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -28,11 +29,15 @@ class MembersController extends Controller
     public function index()
     {
         $members = Member::orderBy('name')->get();
-        if (Auth::user()->admin())
+        if (Auth::user()->admin()) {
             $settings = Setting::all();
-        else
+            $users = User::all();
+        } else {
             $settings = null;
-        return view('members.index', compact('members','settings'));
+            $users = null;
+        }
+
+        return view('members.index', compact('members','settings','users'));
     }
     
     /**

@@ -52,6 +52,8 @@ Route::resource('settings', 'SettingsController', ['only' => ['index', 'update']
 //auth pages
 //Route::get('members', ['uses' => 'MembersController@index', 'as' => 'members']);
 Auth::routes();
+
+Route::patch('users/{user}', ['uses' => 'UserController@update', 'as' => 'users.update']);
 /*
 +--------+-----------+---------------------------+----------------------+------------------------------------------------------------------------+--------------+
 | Domain | Method    | URI                       | Name                 | Action                                                                 | Middleware   |

@@ -61,6 +61,30 @@
                     @endforeach
                 </table>
             </li>
+            <li class="box">
+                    <h3>Userliste</h3>
+                    <hr>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>E-Mail</th>
+                            <th>Privileges</th>
+                            <th>Ändern</th>
+                        </tr>
+                        @foreach ($users as $user)
+                            <tr>    
+                                <form method="post" action="{{ route('users.update', $user) }}">
+                                {{ csrf_field() }}
+                                {{ method_field('patch') }}
+                                    <td><input type="text" value="{{ old('name') ? old('name') : $user->name }}" name="name" autocomplete="off" placeholder=" "></td>
+                                    <td><input type="email" value="{{ old('email') ? old('email') : $user->email }}" name="email" autocomplete="off" placeholder=" "></td>
+                                    <td><input type="number" min="0" max="127" step="1" value="{{ old('privileges') ? old('privileges') : $user->privileges }}" name="privileges" autocomplete="off" placeholder=" "></td>
+                                    <td><button type="submit"><i class="fa fa-check-circle"></i> Ändern</button></td>
+                                </form>
+                            </tr>
+                        @endforeach
+                    </table>
+                </li>
         @endif
     </ul>
 @endsection
