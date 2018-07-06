@@ -44,6 +44,8 @@ Route::resource('newsfeeds', 'NewsfeedsController');
 
 Route::resource('members', 'MembersController');
 
+Route::resource('applications', 'ApplicationsController', ['except' => ['edit', 'update']]);
+
 //auth pages
 //Route::get('members', ['uses' => 'MembersController@index', 'as' => 'members']);
 Auth::routes();
