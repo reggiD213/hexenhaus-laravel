@@ -67,7 +67,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        $bands = Band::all();
+        $bands = Band::orderBy('name')->get();
         return view('events.create', compact('bands'));
     }
 
