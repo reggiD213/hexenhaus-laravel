@@ -115,8 +115,7 @@ class ApplicationsController extends Controller
             default:
                 $recipient = 'Puddy@hexenhaus-metal.de';
         }
-
-        Mail::to('Puddy@hexenhaus-metal.de')->send(new ApplicationMail($application));
+        Mail::to($recipient)->send(new ApplicationMail($application));
 
         return redirect(route('applications.show', $application))->withInfo('Bewerbung wurde zugestellt.');
     }
