@@ -104,7 +104,19 @@ class ApplicationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function send(Application $application) {
-        Mail::to('reggid213@gmail.com')->send(new ApplicationMail($application));
+        switch ($application->genre) {
+            case 'metal':
+                $recipient = 'metalgigs@hexenhaus-metal.de';
+                break;
+            case 'stoner':
+            case 'psy':
+                $recipient = 'goodoldshit@hexenhaus-metal.de';
+                break;
+            default:
+                $recipient = 'Puddy@hexenhaus-metal.de';
+        }
+
+        Mail::to('Puddy@hexenhaus-metal.de')->send(new ApplicationMail($application));
 
         return redirect(route('applications.show', $application))->withInfo('Bewerbung wurde zugestellt.');
     }
