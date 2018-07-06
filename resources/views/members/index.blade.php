@@ -74,11 +74,9 @@
         </div>
     @endif
     <div class="box">
-        <a class="button" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            Logout
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            {{ csrf_field() }}
+        <form method="post" action="{{ route('logout') }}">
+                {{ csrf_field() }}
+                <button type="submit" class="big">Logout</button>
         </form>
     </div>
 @endsection
