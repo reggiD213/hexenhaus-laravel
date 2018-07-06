@@ -8,6 +8,7 @@
 @section('content')
     <h2>Infos für Bands</h2>
     <hr>
+    @include('includes.infobox')
     <div class="box">
         <p>
             Natürlich sollen auch Konzerte bei uns stattfinden. Ihr habt Lust bei uns zu spielen?
