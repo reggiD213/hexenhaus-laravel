@@ -27,7 +27,7 @@ class MembersController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
+        $members = Member::orderBy('name')->get();
         if (Auth::user()->admin())
             $settings = Setting::all();
         else
