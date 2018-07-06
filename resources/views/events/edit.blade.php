@@ -31,16 +31,16 @@
         </div>
 
         <div class="form-group{{ $errors->has('time') ? ' error' : ''}}">
+            <input class="effect" id="event_time" type="text" value="{{ old('time') ? old('time') : $event->time() }}" data-scroll-default="{{ old('time') ? old('time') : $event->time() }}" name="time">
             <label for="event_time">Einlass:</label>
-            <input id="event_time" type="text" value="{{ old('time') ? old('time') : $event->time() }}" data-scroll-default="{{ old('time') ? old('time') : $event->time() }}" name="time">
             @if ($errors->has('time'))
                 <span>{{ $errors->first('time') }}</span>
             @endif
         </div>
 
         <div class="form-group{{ $errors->has('name') ? ' error' : ''}}">
+            <input class="effect" id="event_name" type="text" value="{{ old('name') ? old('name') : $event->name }}" name="name" autocomplete="off" placeholder=" ">
             <label for="event_name">Name:</label>
-            <input id="event_name" type="text" value="{{ old('name') ? old('name') : $event->name }}" name="name" autocomplete="off" placeholder="Eventname eingeben">
             @if ($errors->has('name'))
                 <span>{{ $errors->first('name') }}</span>
             @endif
@@ -62,14 +62,14 @@
             @endif
         </div>
         <div class="form-group{{ $errors->has('price') ? ' error' : ''}}">
+            <input class="effect" id="event_price" type="number" step="0.01" min="0.00" max="99" value="{{ old('price') ? old('price') : $event->price }}" name="price" autocomplete="off" placeholder=" ">
             <label for="event_price">Preis [€]:</label>
-            <input id="event_price" type="number" step="0.01" min="0.00" max="99" value="{{ old('price') ? old('price') : $event->price }}" name="price" autocomplete="off" placeholder="Eintrittspreis eingeben">
             @if ($errors->has('price'))
                 <span>{{ $errors->first('price') }}</span>
             @endif
         </div>
         <div class="form-group{{ $errors->has('tickets') ? ' error' : ''}}">
-            <label for="event_tickets">Ticketvorverkauf:</label>
+            <label for="event_tickets">Ticketvorverkauf:</label><br>
             <input id="event_tickets" type="checkbox" value="1" name="tickets" autocomplete="off" {{ old('tickets') == 1 ? "checked" : $event->tickets == 1 ? "checked" : "" }}>
             @if ($errors->has('tickets'))
                 <span>{{ $errors->first('tickets') }}</span>
@@ -77,7 +77,7 @@
         </div>
         <div class="form-group{{ $errors->has('bands') ? ' error' : ''}}">
             <label for="event_bands">Bands (optional):</label><br>
-            <select name="bands[]" size="5" multiple>
+            <select class="effect" name="bands[]" size="5" multiple>
                 @foreach ($bands as $band)
                     <option value="{{ $band->id }}"
                     @if (old('bands') != [])
@@ -96,7 +96,7 @@
         <div class="form-group{{ $errors->has('image') ? ' error' : ''}}">
             <label for="event_thumb">Bild:<br>
                 <img id="image" src="/images/uploads/events/{{ $event->date() }}/{{ $event->thumbnail() }}">
-            </label>
+            </label><br>
             <input id="event_thumb" type="file" name="image">
             @if ($errors->has('image'))
                 <span>{{ $errors->first('image') }}</span>

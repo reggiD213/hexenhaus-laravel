@@ -19,8 +19,8 @@
         {{ method_field('patch') }}
 
         <div class="form-group{{ $errors->has('text') ? ' error' : ''}}">
+            <input class="effect" id="newsfeed_text" type="text" value="{{ old('text') ? old('text') : $newsfeed->text }}" name="text" autocomplete="off" placeholder=" " required>
             <label for="newsfeed_text">Text:</label>
-            <input id="newsfeed_text" type="text" value="{{ old('text') ? old('text') : $newsfeed->text }}" name="text" autocomplete="off" placeholder="Newstext eingeben">
             @if ($errors->has('text'))
                 <span>{{ $errors->first('text') }}</span>
             @endif
