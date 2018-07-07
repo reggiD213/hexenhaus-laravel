@@ -15,5 +15,5 @@ E-Mail Adresse: <a href="mailto:{{ $application->mail }}">{{ $application->mail 
 @if ($application->link3)<a target="_blank" href="{{ $application->link3 }}">{{ $application->link3 }}</a><br>@endif
 <br>
 Bewerbungstext:<br>
-{!! $application->text !!}
+{!! nl2br(e($application->text)) !!}
 @endsection

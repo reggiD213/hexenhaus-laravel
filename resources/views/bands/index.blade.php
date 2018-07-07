@@ -31,7 +31,7 @@
                             <h3 class="glow">{{ $band->name }}</h3>
                         </a>
                         <hr>
-                        <p>{{ $band->description }}</p>
+                        <p>{!! nl2br(e($band->description)) !!}</p>
                         <a class="button left" target="_blank" href="{{ $band->homepage }}"><i class="fa fa-info-circle"></i> Website</a>
                         @if ($band->events->count())
                             {{-- <a class="button left" href="#"><i class="fa fa-calendar"></i> Events</a> --}}

@@ -16,7 +16,7 @@
                 <hr>
                 <a href="{{ route('applications.show', $application) }}"><h3>{{ $application->name }}</h3></a>
                 <hr>
-                <p>{!! str_limit($application->text, 300) !!}</p>
+                <p>{!! str_limit(nl2br(e($application->text)), 300) !!}</p>
                 <hr>
                 <a class="button left" href="{{ route('applications.show', $application) }}"><i class="fa fa-info-circle"></i> Details</a>
             </li>

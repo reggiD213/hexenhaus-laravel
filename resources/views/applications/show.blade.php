@@ -22,7 +22,7 @@
         @if ($application->link3)<a target="_blank" href="{{ $application->link3 }}">{{ $application->link3 }}</a>@endif
         <hr>
         <span class="dull">Bewerbungstext:</span>
-        <p>{!! $application->text !!}</p>
+        <p>{!! nl2br(e($application->text)) !!}</p>
     </div>
 @endsection
 
