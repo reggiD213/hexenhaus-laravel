@@ -7,6 +7,14 @@
 @section('content')
     <h2>Willkommen {{ Auth::user()->name }}!</h2>
     <hr>
+    @if (count($errors))
+    <div class="box">
+        Bitte Formular korrekt ausfüllen!
+        @foreach($errors->all() as $error)
+            {{ $error }}
+        @endforeach
+    </div>
+    @endif
     @include('includes.infobox')
     <ul class="members layout">
         @if (Auth::user()->admin())

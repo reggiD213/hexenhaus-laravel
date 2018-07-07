@@ -9,8 +9,9 @@
     <hr>
     @if (count($errors))
         <div class="box">
+            Bitte Formular korrekt ausfüllen!
             @foreach($errors->all() as $error)
-                Bitte Formular korrekt ausfüllen!
+                {{ $error }}
             @endforeach
         </div>
     @endif
