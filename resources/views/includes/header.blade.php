@@ -18,7 +18,7 @@
                         @endforeach
                     </ul>
                 </div>
-                @if (Auth::check() && Auth::user()->admin())
+                @if (Auth::check() && Auth::user()->promoter())
                     <a class="admin" href="{{ route('newsfeeds.index') }}"><i class="fa fa-cog"></i></a>
                 @endif
             </div>

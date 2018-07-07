@@ -15,7 +15,7 @@ class ApplicationsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin')->except('create');
+        $this->middleware('booker')->except('create');
     }
 
     /**

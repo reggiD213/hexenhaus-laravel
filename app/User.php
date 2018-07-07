@@ -33,6 +33,25 @@ class User extends Authenticatable
      * @return bool
      */
     public function admin() {
+        //dd($this->privileges);
+        return $this->privileges & 16;
+    }
+
+    /**
+     * Checks if an user has promoter privileges.
+     *
+     * @return bool
+     */
+    public function promoter() {
+        return $this->privileges & 8;
+    }
+
+    /**
+     * Checks if an user has booker privileges.
+     *
+     * @return bool
+     */
+    public function booker() {
         return $this->privileges & 4;
     }
 

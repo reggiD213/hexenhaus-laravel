@@ -20,7 +20,8 @@ class EventsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'indexBygone', 'show']);
+        $this->middleware('booker')->except(['index', 'indexBygone', 'show']);
+        //TODO: middlewares
     }
 
     /**

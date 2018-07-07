@@ -17,7 +17,7 @@ class BandsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin')->except('index');
+        $this->middleware('booker')->except('index');
     }
 
     /**

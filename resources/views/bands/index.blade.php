@@ -9,7 +9,7 @@
     <hr>
     @include('includes.infobox')
     <ul class="bands layout">
-        @if (Auth::check() && Auth::user()->admin())
+        @if (Auth::check() && Auth::user()->booker())
             <li class="box">
                 <a href="{{ route('bands.create') }}">
                     <h3 class="glow"><i class="fa fa-plus-circle"></i> Neue Band erstellen</h3>
@@ -36,7 +36,7 @@
                         @if ($band->events->count())
                             {{-- <a class="button left" href="#"><i class="fa fa-calendar"></i> Events</a> --}}
                         @endif
-                        @if (Auth::check() && Auth::user()->admin())
+                        @if (Auth::check() && Auth::user()->booker())
                             <a class="button left" href="{{ route('bands.edit', $band) }}"><i class="fa fa-cog"></i> Bearbeiten</a>
                         @endif
                         @if ($band->soundcloud)
