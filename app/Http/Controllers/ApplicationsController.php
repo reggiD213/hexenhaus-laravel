@@ -70,6 +70,7 @@ class ApplicationsController extends Controller
         $application->link3 = $request->link3;
         $application->save();
 
+        $this->send($application);
         return redirect(route('apply'))->withInfo('Vielen Dank für Ihre Anfrage!');
     }
 
@@ -93,7 +94,6 @@ class ApplicationsController extends Controller
     public function destroy(Application $application)
     {
         $application->delete();
-        $this->send($application);
         return redirect(route('applications.index'))->withInfo('Bewerbung erfolgreich gelöscht!');
     }
 
