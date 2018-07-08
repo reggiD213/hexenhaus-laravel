@@ -93,7 +93,7 @@ class ApplicationsController extends Controller
     public function destroy(Application $application)
     {
         $application->delete();
-        $this->send();
+        $this->send($application);
         return redirect(route('applications.index'))->withInfo('Bewerbung erfolgreich gelöscht!');
     }
 
