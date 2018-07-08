@@ -15,7 +15,7 @@ class ApplicationsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('booker')->except('create');
+        $this->middleware('booker')->except(['create','store']);
     }
 
     /**
@@ -93,7 +93,7 @@ class ApplicationsController extends Controller
     public function destroy(Application $application)
     {
         $application->delete();
-
+        $this->send();
         return redirect(route('applications.index'))->withInfo('Bewerbung erfolgreich gelöscht!');
     }
 
