@@ -66,6 +66,7 @@ class BandsController extends Controller
         $band->homepage = $request->homepage;
         $band->soundcloud = $request->soundcloud;
         $band->bandcamp = $request->bandcamp;
+        $band->youtube = $request->youtube;
         $band->save();
 
         //resize and move the image(s)
@@ -119,6 +120,7 @@ class BandsController extends Controller
         $band->homepage = $request->homepage;
         $band->soundcloud = $request->soundcloud;
         $band->bandcamp = $request->bandcamp;
+        $band->youtube = $request->youtube;
         $band->save();
 
         //resize and move the image(s)

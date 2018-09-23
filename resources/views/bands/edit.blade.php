@@ -54,6 +54,13 @@
                 <span>{{ $errors->first('bandcamp') }}</span>
             @endif
         </div>
+        <div class="form-group{{ $errors->has('youtube') ? ' error' : ''}}">
+            <input class="effect" id="band_youtube" type="text" value="{{ old('youtube') ? old('youtube') : $band->youtube }}" name="youtube" autocomplete="off" placeholder=" ">
+            <label for="band_youtube">Youtube-Username (optional):</label>
+            @if ($errors->has('youtube'))
+                <span>{{ $errors->first('youtube') }}</span>
+            @endif
+        </div>
         <div class="form-group{{ $errors->has('image') ? ' error' : ''}}">
             <label for="band_thumb">Bild:<br>
                 <img id="image" src="/images/uploads/bands/{{ $band->id . '/' . $band->image }}">
