@@ -5,14 +5,17 @@ function set_active($path) {
 }
 
 function html_tidy_truncate($src, $len){
-    $src = str_limit($src, $len, "");
-    $opentag = strrchr($src, '<');
-    $closetag = strrchr($src, '>');
+    if (strlen($src) > $len) {
+        $src = str_limit($src, $len, "");
+        $opentag = strrchr($src, '<');
+        $closetag = strrchr($src, '>');
 
-    if ( ( $closetag  ||  $opentag ) ) {
-        if ( $closetag && (strlen($closetag) > strlen($opentag) )) {
-            $src = substr($src , 0 , -strlen($opentag));
+        if ( ( $closetag  ||  $opentag ) ) {
+            if ( $closetag && (strlen($closetag) > strlen($opentag) )) {
+                $src = substr($src , 0 , -strlen($opentag));
+            }
         }
+        $src .= "...";
     }
-    return $src . "...";
+    return $src;
 }
