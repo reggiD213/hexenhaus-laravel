@@ -44,6 +44,10 @@
                         @else
                             @if ($band->bandcamp)
                                 <iframe style="height: 120px" src="https://bandcamp.com/EmbeddedPlayer/album={{ $band->bandcamp }}/size=large/bgcol=f5f5f5/linkcol=e32c14/tracklist=false/artwork=small/transparent=true/" seamless>{{--<a href="http://mrbison.bandcamp.com/album/asteroid">Asteroid by Mr Bison</a>--}}</iframe>
+                            @else
+                                @if ($band->youtube)
+                                    <iframe style="height: 200px" allowfullscreen src="http://www.youtube.com/embed?listType=user_uploads&list={{ $band->youtube }}">
+                                @endif
                             @endif
                         @endif
                     </div>
