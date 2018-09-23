@@ -4,7 +4,8 @@ function set_active($path) {
     return call_user_func_array('Request::is', (array)$path) ? 'active' : '';
 }
 
-function html_tidy($src){
+function html_tidy_truncate($src, $len){
+    $src = str_limit($src, $len, "");
     $opentag = strrchr($src, '<');
     $closetag = strrchr($src, '>');
 
@@ -13,5 +14,5 @@ function html_tidy($src){
             $src = substr($src , 0 , -strlen($opentag));
         }
     }
-    return $src;
+    return $src . "...";
 }

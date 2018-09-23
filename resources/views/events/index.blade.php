@@ -37,7 +37,7 @@
                             <h3>{{ $event->name }}</h3>
                         </a>
                         <hr>
-                        <p>{!! clean(html_tidy(str_limit($event->desc_long, 300))) !!}</p>
+                        <p>{!! clean(html_tidy_truncate($event->desc_long, 300)) !!}</p>
                         <span class="dull">Eintritt: {{ $event->printPrice() }} €, Einlass: {{ $event->printTime() }}</span>
                         <hr>
                         <a class="button left" href="{{ route('events.show', $event) }}"><i class="fa fa-info-circle"></i> Details</a>
