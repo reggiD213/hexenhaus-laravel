@@ -8,7 +8,16 @@
 @section('content')
     <h2>Anfahrt</h2>
     <hr>
-    <img class="get_there" src="/images/anfahrt.jpg">
+    <div class="contact box">
+        <p>
+            Ihr erreicht uns über Linie 2, Haltestelle Multscherschule oder Eselsberg Hasenkopf.<br>
+            Mit dem Auto könnt ihr im Fort auf dem hinterem Parkplatz parken.<br>
+            Genauer Standort siehe Karte:
+        </p>
+        <div class="mapWrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8907.967230686325!2d9.971682106462687!3d48.411338101359334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479965cb90caab95%3A0xd22d3ece5346d7a5!2sHexenhaus+Ulm+e.V.!5e0!3m2!1sde!2sde!4v1544471672852" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
 @endsection
 
 @section('sidebar')
