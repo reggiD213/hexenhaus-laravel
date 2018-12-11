@@ -102,6 +102,15 @@
                 <span>{{ $errors->first('image') }}</span>
             @endif
         </div>
+        <div class="form-group{{ $errors->has('facebook_image') ? ' error' : ''}}">
+            <label for="facebook_image">Facebook Bild (optional):<br>
+                <img id="fb_image" src="/images/uploads/events/{{ $event->date() }}/{{ $event->facebook_image }}">
+            </label><br>
+            <input id="facebook_image" type="file" name="facebook_image">
+            @if ($errors->has('facebook_image'))
+                <span>{{ $errors->first('facebook_image') }}</span>
+            @endif
+        </div>
         <hr>
         <div class="form-group">
             <button type="submit"><i class="fa fa-check-circle"></i> Ändern</button>

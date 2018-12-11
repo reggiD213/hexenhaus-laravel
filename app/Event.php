@@ -71,6 +71,14 @@ class Event extends Model
         return $value;
     }
 
+    public function getFacebookImageAttribute($value)
+    {
+        if (!is_file('images/uploads/events/' . $this->date() . '/' . $value)) {
+            return '../not-available.jpg';
+        }
+        return $value;
+    }
+
     public function thumbnail()
     {
         $image = $this->image;

@@ -13,6 +13,9 @@
         @if($event->hasPics)
             <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Galerie</a>
         @endif
+        @if (Auth::check() && Auth::user()->promoter())
+    <a class="left button" href="/images/uploads/events/{{ $event->date() }}/{{ $event->facebook_image }}">Facebook Bild</a>
+        @endif
         <h3 class="glow left">{{ $event->printDate() }}</h3>
         @if ($event->tickets)
             {{--<a class="button right" target="_blank" href="https://www.ulmtickets.de/orte/hexenhaus"><i class="fa fa-shopping-cart"></i> Tickets</a>--}}

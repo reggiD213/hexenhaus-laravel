@@ -31,6 +31,18 @@ $("#event_thumb,#band_thumb,#pic_thumb").on('change', function () {
     reader.readAsDataURL(this.files[0]);
 });
 
+$("#facebook_image").on('change', function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("fb_image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+});
+
 $("#imgInp").change(function () {
     readURL(this);
 });

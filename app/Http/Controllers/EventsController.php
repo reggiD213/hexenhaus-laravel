@@ -87,6 +87,7 @@ class EventsController extends Controller
             'time' => 'date_format:H:i',
             'price' => 'required|min:0|max:66',
             'image' => 'required|max:40000', //~40MB
+            'facebook_image' => 'max:40000',
         ]);
 
         //create Model
@@ -125,7 +126,19 @@ class EventsController extends Controller
             $event->image_height = $intervention->height();
             $event->image_width = $intervention->width();
         }
+        if ($request->hasFile('facebook_image')) {
+            $image = $request->file('facebook_image');
 
+            $time = time();
+
+            $filename = $time . '_facebook_' . $image->getClientOriginalName();
+            
+            $event->facebook_image = $filename;
+
+            $path = public_path('images/uploads/events/' . $event->date() . '/' . $filename);
+            $intervention = Image::make($image->getRealPath())->save($path);
+            $event->save();
+        }
         $event->bands()->detach();
         if ($request->bands) {
             foreach ($request->bands as $bandId) {
@@ -166,7 +179,7 @@ class EventsController extends Controller
             'date' => 'date',
             'time' => 'date_format:H:i',
             'price' => 'required|min:0|max:66',
-            'image' => 'max:40000', //~40MB
+            'image,facebook_image' => 'max:40000', //~40MB
         ]);
 
         $event->bands()->detach();
@@ -211,7 +224,19 @@ class EventsController extends Controller
             $event->image_width = $intervention->width();
             $event->save();
         }
+        if ($request->hasFile('facebook_image')) {
+            $image = $request->file('facebook_image');
 
+            $time = time();
+
+            $filename = $time . '_facebook_' . $image->getClientOriginalName();
+            
+            $event->facebook_image = $filename;
+
+            $path = public_path('images/uploads/events/' . $event->date() . '/' . $filename);
+            $intervention = Image::make($image->getRealPath())->save($path);
+            $event->save();
+        }
         //return redirect(route('events.edit', [$event]))->withInfo('Veranstaltung erfolgreich geändert!');
         return redirect(route('events.index'))->withInfo('Veranstaltung erfolgreich geändert!');
     }
