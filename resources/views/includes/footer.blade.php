@@ -17,7 +17,7 @@
                 <ul>
                     <li>Veranstaltungsbeginn, wenn nicht anders angegeben um 20:00</li>
                     <li>Eintritt ab 16 Jahren</li>
-                    <li><a style="text-decoration: underline;" href="{{ route('impressum') }}">Impressum</a></li>
+                    <li><a style="text-decoration: underline;" href="{{ route('impressum') }}">Impressum und Datenschutz</a></li>
                     <li><a style="text-decoration: underline;" href="{{ route('members.index') }}">Member Login</a></li>
                 </ul>
             </div>
