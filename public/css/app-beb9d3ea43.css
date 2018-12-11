@@ -1161,12 +1161,11 @@ footer a.freefm:hover {
   bottom: 0;
   right: 0;
   left: 0;
-  height: 50px;
   text-align: center;
   line-height: 50px;
   background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(0, 0, 0, 0.9));
   border-top: 1px solid #333333;
-  font-size: 14px;
+  font-size: 10px;
   font-family: "Lato", sans-serif;
   font-weight: 100;
   transition: 1.6s;
@@ -1174,8 +1173,16 @@ footer a.freefm:hover {
   animation: slideIn 1.6s;
 }
 
-.cookie-consent .cookie-consent__message {
-  white-space: nowrap;
+@media all and (min-width: 768px) {
+  .cookie-consent {
+    font-size: 14px;
+  }
+}
+
+@media all and (min-width: 400px) {
+  .cookie-consent {
+    height: 50px;
+  }
 }
 
 @-webkit-keyframes slideIn {
@@ -1214,8 +1221,14 @@ footer a.freefm:hover {
   background: transparent;
   display: inline-block;
   line-height: 30px;
-  font-size: 16px;
+  font-size: 11px;
   font-weight: bold;
+}
+
+@media all and (min-width: 768px) {
+  .cookie-consent__agree {
+    font-size: 16px;
+  }
 }
 
 /*HELPERS START*/

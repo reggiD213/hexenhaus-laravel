@@ -538,19 +538,21 @@ footer {
   bottom: 0;
   right: 0;
   left: 0;
-  height: 50px;
   text-align: center;
-  line-height: 50px;
+  line-height: 50px;  
   background: linear-gradient(rgba(10,10,10,0.9),rgba(0,0,0,0.9));
   border-top: $border;
-  font-size: 14px;
+  font-size: 10px;
+  @media all and (min-width: 768px) {
+    font-size: 14px;
+  }
+  @media all and (min-width: 400px) {
+    height: 50px;
+  }
   font-family: "Lato", sans-serif;
   font-weight: 100;
   transition: 1.6s;
   animation: slideIn 1.6s;
-  .cookie-consent__message {
-    white-space: nowrap;
-  }
 }
 @keyframes slideIn {
   0% {
@@ -569,7 +571,10 @@ footer {
   background: rgba(0, 0, 0, 0);
   display: inline-block;
   line-height: 30px;
-  font-size: 16px;
+  font-size: 11px;
+  @media all and (min-width: 768px) {
+    font-size: 16px;
+  }
   font-weight: bold;
 }
 
