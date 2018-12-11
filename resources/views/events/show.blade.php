@@ -13,7 +13,7 @@
         @if($event->hasPics)
             <a class="left button" href="{{ route('galleries.show', $event->gallery) }}">Zur Galerie</a>
         @endif
-        @if (Auth::check() && Auth::user()->promoter())
+        @if (Auth::check() && Auth::user()->promoter() && event->facebook_image != '../not-available.jpg')
     <a class="left button" href="/images/uploads/events/{{ $event->date() }}/{{ $event->facebook_image }}">Facebook Bild</a>
         @endif
         <h3 class="glow left">{{ $event->printDate() }}</h3>
