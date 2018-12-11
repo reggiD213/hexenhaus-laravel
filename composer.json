@@ -10,7 +10,8 @@
         "doctrine/dbal": "^2.5",
         "intervention/image": "^2.3",
         "laravel/framework": "5.3.*",
-        "mews/purifier": "^2.0"
+        "mews/purifier": "^2.0",
+        "spatie/laravel-cookie-consent": "^1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

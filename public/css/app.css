@@ -1155,6 +1155,69 @@ footer a.freefm:hover {
   height: 100%;
 }
 
+.cookie-consent {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(0, 0, 0, 0.9));
+  border-top: 1px solid #333333;
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  transition: 1.6s;
+  -webkit-animation: slideIn 1.6s;
+  animation: slideIn 1.6s;
+}
+
+.cookie-consent .cookie-consent__message {
+  white-space: nowrap;
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  50% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  50% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.cookie-consent__agree {
+  border: none;
+  color: white;
+  background: transparent;
+  display: inline-block;
+  line-height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 /*HELPERS START*/
 .left {
   float: left;

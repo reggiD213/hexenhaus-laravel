@@ -25,6 +25,6 @@
 </div>
 
 @include('includes.footer_js')
-
+@include('cookieConsent::index')
 </body>
 </html>
