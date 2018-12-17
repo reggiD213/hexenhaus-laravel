@@ -190,6 +190,8 @@ class EventsController extends Controller
             }
         }
 
+        $oldDateString = $event->date();
+        
         $event->name = $request->name;
         $event->desc_long = clean($request->desc_long);
         $event->desc_short = "";
@@ -199,6 +201,8 @@ class EventsController extends Controller
         $event->tickets = $request->tickets == 1 ? 1 : 0;
         $event->save();
 
+
+        rename(public_path('images/uploads/events/' . $oldDateString),public_path('images/uploads/events/' . $event->date()));
         //resize and move the image(s)
         if ($request->hasFile('image')) {
             $image = $request->file('image');
