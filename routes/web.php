@@ -13,10 +13,6 @@
 
 Route::singularResourceParameters();
 
-Route::get('test', function() {
-    return view('test', ['events' => App\Event::all()]);
-});
-
 //static pages
 Route::get('apply', ['uses' => 'PagesController@apply', 'as' => 'apply']);
 Route::get('contact', ['uses' => 'PagesController@contact', 'as' => 'contact']);
